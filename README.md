@@ -3,6 +3,7 @@ Notes from my evaluation of Replicated.Com's KOTS product.
 
 ## Test Plan
 **1) Setup Dev Workstation**
+
 Using this [Vagrantfile](vagrant/Vagrantfile), use Vagrant to build a Dev Workstation running Ubuntu 18.04
 
 The post-install for the Vagrant build includes:
