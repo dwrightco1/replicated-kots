@@ -79,6 +79,11 @@ IP Address (lo) = 127.0.0.1
 IP Address (eth0) = 10.0.2.235
 ```
 
+Cleanup (delete all Kubernetes resources created by the installer)
+```
+kubectl delete -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
+```
+
 ## Comments/Observations
 1. When extracting the replicated-cli package, it didn't extract to a subdiretory (and it override the README.md in the current directory)
 
