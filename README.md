@@ -85,6 +85,7 @@ $ kubectl delete -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/
 ```
 
 **N. Delete EKS Cluster**
+
 IMPORTANT: don't forget this step -- it deletes all AWS resources created by the Terraform installer:
 ```
 $ terraform destroy -auto-approve
