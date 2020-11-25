@@ -16,6 +16,7 @@ The post-install for the Vagrant build includes:
 Once the Vagrant VM is ready, SSH to it and perform the remaining tasks from there.
 
 **2) Configure AWS Integration**
+
 Configure the AWS Client to use your AWS account when provisioning resources:
 ```
 $ aws configure
@@ -26,7 +27,8 @@ Default output format [None]: json
 ```
 
 **3) Provision an EKS Cluster on AWS**
-* Using `eks-deployer`, create a Kubernetes cluster (to run tests against)
+
+Using `eks-deployer`, create a Kubernetes cluster (to run tests against):
 ```
 $ git clone https://github.com/dyvantage/eks-deployer.git
 $ cd ~/eks-deployer
@@ -34,7 +36,8 @@ $ terraform init
 $ terraform plan     # this is an optional preview step
 $ terraform apply -auto-approve
 ```
-* Once the cluster is done provisioning, configure kubectl:
+
+Once the cluster is done provisioning, configure kubectl:
 ```
 $ aws eks --region $(terraform output region) update-kubeconfig --name $(terraform output cluster_name)
 $ kubectl get nodes
@@ -45,7 +48,8 @@ ip-10-0-3-59.us-east-2.compute.internal    Ready    <none>   107s   v1.17.12-eks
 ```
 
 **4. Deploy 2-Tier Application (Web/Database)**
-* Validate the new cluster by deploying a simple Node.js application with a Mysql database back-end.
+
+Validate the new cluster by deploying a simple Node.js application with a Mysql database back-end.
 ```
 kubectl create -f https://github.com/dwrightco1/nodeapp/blob/master/kubernetes/install-nodeapp.yaml
 ```
