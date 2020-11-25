@@ -26,8 +26,3 @@ sudo chmod 755 ${install_dir}/terraform
 curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip 2>/dev/null
 unzip awscliv2.zip
 sudo ./aws/install
-
-# Update bash profile
-echo "export PS1=\"terraform \$\"" > ~/.bash_profile
-
-exit 0
