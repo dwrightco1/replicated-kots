@@ -32,6 +32,7 @@ Using `eks-deployer`, create a Kubernetes cluster (to run tests against):
 ```
 $ git clone https://github.com/dyvantage/eks-deployer.git
 $ cd ~/eks-deployer
+$ ./install-prereqs.sh
 $ terraform init
 $ terraform plan     # this is an optional preview step
 $ terraform apply -auto-approve
