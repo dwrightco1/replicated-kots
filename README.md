@@ -2,7 +2,8 @@
 Notes from my evaluation of Replicated.Com's KOTS product.
 
 ## Test Plan
-1. Using this [Vagrantfile](vagrant/Vagrantfile), use Vagrant to build Dev Workstation running Ubuntu 18.04
+**1) Setup Dev Workstation**
+Using this [Vagrantfile](vagrant/Vagrantfile), use Vagrant to build a Dev Workstation running Ubuntu 18.04
 
 The post-install for the Vagrant build includes:
 * [configure-hostname.sh](vagrant/sripts/configure-hostname.sh)
@@ -11,14 +12,10 @@ The post-install for the Vagrant build includes:
 * [install-kubectl.sh](vagrant/sripts/install-terraform-aws.sh)
 * [install-replicated-cli.sh](vagrant/scripts/install-replicated-cli.sh)
 
-**The remaining tasks will all be done using the Vagrant VM:**
+Once the Vagrant VM is ready, SSH to it and perform the remaining tasks using the Vagrant VM:
 
-2. Clone the following repos:
-* [eks-deployer](https://github.com/dyvantage/eks-deployer)
-* [nodeapp](https://github.com/dwrightco1/nodeapp)
-
-3. Configure AWS Integration
-* Configure the AWS Client to use your AWS account when provisioning resources:
+**2) Configure AWS Integration**
+Configure the AWS Client to use your AWS account when provisioning resources:
 ```
 $ aws configure
 AWS Access Key ID [None]: ********
@@ -27,25 +24,30 @@ Default region name [None]: us-east-1
 Default output format [None]: json
 ```
 
-4. Provision an EKS Cluster on AWS
+**3) Provision an EKS Cluster on AWS**
 * Using `eks-deployer`, create a Kubernetes cluster (for testing against)
 ```
+$ git clone https://github.com/dyvantage/eks-deployer.git
 $ cd ~/eks-deployer
 $ terraform init
+$ terraform plan     # this is an optional preview step
 $ terraform apply -auto-approve
 ```
+* Once the cluster is done provisioning, configure kubectl:
+```
+$ aws eks --region $(terraform output region) update-kubeconfig --name $(terraform output cluster_name)
+$ kubectl get nodes
+NAME                                       STATUS   ROLES    AGE    VERSION
+ip-10-0-1-158.us-east-2.compute.internal   Ready    <none>   110s   v1.17.12-eks-7684af
+ip-10-0-3-164.us-east-2.compute.internal   Ready    <none>   108s   v1.17.12-eks-7684af
+ip-10-0-3-59.us-east-2.compute.internal    Ready    <none>   107s   v1.17.12-eks-7684af
+```
 
-Note: if you'd like to see what Terraform is going to do before it does it, run:
+**4. Deploy 2-Tier Application (Web/Database)**
+* Validate the new cluster by deploying a simple Node.js application with a Mysql database back-end.
 ```
-$ terraform plan
+$ git clone https://github.com/dwrightco1/nodeapp.git
 ```
-
-* Once the cluster is done provisioning, configure Kubectl:
-```
-aws eks --region $(terraform output region) update-kubeconfig --name $(terraform output cluster_name)
-```
-
-4. Deploy & Validate 2-Tier Application (`nodeapp` -- which is a Node.js application with a Mysql database back-end)
 
 ## Comments/Observations
 1. When extracting the replicated-cli package, it didn't extract to a subdiretory (and it override the README.md in the current directory)
@@ -60,3 +62,4 @@ bad_text = [
 	"which will show the initial version that was check deployed"
 ]
 ```
+
