@@ -17,20 +17,34 @@ The post-install for the Vagrant build includes:
 * [eks-deployer](https://github.com/dyvantage/eks-deployer)
 * [nodeapp](https://github.com/dwrightco1/nodeapp)
 
-3. Configure AWS Client
-* **$ aws configure**
+3. Configure AWS Integration
+* Configure the AWS Client to use your AWS account when provisioning resources:
 ```
+$ aws configure
 AWS Access Key ID [None]: ********
 AWS Secret Access Key [None]: ********
 Default region name [None]: us-east-1
 Default output format [None]: json
 ```
 
-4. Provision an EKS Cluster on AWS (target Kubernetes cluster for testing)
-* `terraform init`
-* `terraform apply -auto-approve`
+4. Provision an EKS Cluster on AWS
+* Using `eks-deployer`, create a Kubernetes cluster (for testing against)
+```
+$ cd ~/eks-deployer
+$ terraform init
+$ terraform apply -auto-approve
+```
 
-Once the cluster is done provisioning, configure Kubectl:
+Note: if you'd like to see what Terraform is going to do before it does it, run:
+```
+$ terraform plan
+```
+
+* Once the cluster is done provisioning, configure Kubectl:
+```
+aws eks --region $(terraform output region) update-kubeconfig --name $(terraform output cluster_name)
+```
+
 4. Deploy & Validate 2-Tier Application (`nodeapp` -- which is a Node.js application with a Mysql database back-end)
 
 ## Comments/Observations
