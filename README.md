@@ -28,7 +28,7 @@ Default output format [None]: json
 
 **3) Provision an EKS Cluster on AWS**
 
-Using `eks-deployer`, create a Kubernetes cluster (to run tests against):
+Using [eks-deployer](https://github.com/dyvantage/eks-deployer), create a Kubernetes cluster (to run tests against):
 ```
 $ git clone https://github.com/dyvantage/eks-deployer.git
 $ cd ~/eks-deployer
@@ -50,7 +50,7 @@ ip-10-0-3-59.us-east-2.compute.internal    Ready    <none>   107s   v1.17.12-eks
 
 **4. Deploy 2-Tier Application (Web/Database)**
 
-Validate the new cluster by deploying a simple Node.js application with a Mysql database back-end.
+Validate the new cluster by deploying a [Sample Application](https://github.com/dwrightco1/nodeapp).  This is a simple Node.js application with a MySQL database back-end.
 ```
 kubectl apply -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
 ```
