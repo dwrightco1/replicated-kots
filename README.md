@@ -52,7 +52,7 @@ ip-10-0-3-59.us-east-2.compute.internal    Ready    <none>   107s   v1.17.12-eks
 
 Validate the new cluster by deploying a simple Node.js application with a Mysql database back-end.
 ```
-kubectl create -f https://github.com/dwrightco1/nodeapp/blob/master/kubernetes/install-nodeapp.yaml
+kubectl apply -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
 ```
 
 ## Comments/Observations
