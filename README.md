@@ -81,8 +81,16 @@ IP Address (eth0) = 10.0.2.235
 
 Cleanup (delete all Kubernetes resources created by the installer)
 ```
-kubectl delete -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
+$ kubectl delete -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
 ```
+
+**N. Delete EKS Cluster**
+IMPORTANT: don't forget this step -- it deletes all AWS resources created by the Terraform installer:
+```
+$ terraform destroy -auto-approve
+```
+
+Something to watch out for: if you create an AWS resource through Kubernetes (like a PVC) deleteting the EKS cluster will not remove the storage volume associated with the PVC.  So make sure you clean up your Kubernetes resoures using `kubectl` before cleaning up with Terraform.
 
 ## Comments/Observations
 1. When extracting the replicated-cli package, it didn't extract to a subdiretory (and it override the README.md in the current directory)
