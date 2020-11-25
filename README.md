@@ -1,5 +1,6 @@
 # Test Plan
 1. Using this [Vagrantfile](vagrant/Vagrantfile), use Vagrant to build Dev Workstation running Ubuntu 18.04
+
 The post-install includes:
 * [configure-hostname.sh](vagrant/sripts/configure-hostname.sh)
 * [configure-ntp.sh](vagrant/sripts/configure-ntp.sh)
