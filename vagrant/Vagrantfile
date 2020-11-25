@@ -15,5 +15,7 @@ Vagrant.configure("2") do |config|
     kots.vm.provision :shell, path: "scripts/configure-hostname.sh", :args => "kots"
     kots.vm.provision :shell, path: "scripts/configure-ntp.sh", :args => "UTC"
     kots.vm.provision :shell, path: "scripts/install-terraform-aws.sh"
+    kots.vm.provision :shell, path: "scripts/install-kubectl.sh"
+    kots.vm.provision :shell, path: "scripts/install-replicated-cli.sh"
   end
 end

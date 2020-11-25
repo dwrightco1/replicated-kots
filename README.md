@@ -7,13 +7,13 @@ Notes from my evaluation of Replicated.Com's KOTS product.
 Using this [Vagrantfile](vagrant/Vagrantfile), use Vagrant to build a Dev Workstation running Ubuntu 18.04
 
 The post-install for the Vagrant build includes:
-* [configure-hostname.sh](vagrant/sripts/configure-hostname.sh)
-* [configure-ntp.sh](vagrant/sripts/configure-ntp.sh)
-* [install-terraform-aws.sh](vagrant/sripts/install-terraform-aws.sh)
-* [install-kubectl.sh](vagrant/sripts/install-terraform-aws.sh)
+* [configure-hostname.sh](vagrant/scripts/configure-hostname.sh)
+* [configure-ntp.sh](vagrant/scripts/configure-ntp.sh)
+* [install-terraform-aws.sh](vagrant/scripts/install-terraform-aws.sh)
+* [install-kubectl.sh](vagrant/scripts/install-terraform-aws.sh)
 * [install-replicated-cli.sh](vagrant/scripts/install-replicated-cli.sh)
 
-Once the Vagrant VM is ready, SSH to it and perform the remaining tasks using the Vagrant VM:
+Once the Vagrant VM is ready, SSH to it and perform the remaining tasks from there.
 
 **2) Configure AWS Integration**
 Configure the AWS Client to use your AWS account when provisioning resources:
