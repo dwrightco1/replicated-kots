@@ -1,0 +1,8 @@
+# create namespace
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nodeapp-dev
+  labels:
+    env: nodeapp-dev

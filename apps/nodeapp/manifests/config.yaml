@@ -1,0 +1,19 @@
+apiVersion: kots.io/v1beta1
+kind: Config
+metadata:
+  name: config-nodeapp
+spec:
+  groups:
+    - name: nodeapp_settings
+      title: Nodeapp External Access Type
+      description: Configure external access to the Nodeapp application
+      items:
+        - name: nodeapp_external_port_type
+          title: Port Type for External Access
+          description: Select Load-Balancer if supported by your cluster
+          type: select_one
+          items:
+          - name: nodeapp_port_type_loadbalancer
+            title: Load-Balancer
+          - name: nodeapp_port_type_nodeport
+            title: Node-Port

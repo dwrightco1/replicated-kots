@@ -1,0 +1,11 @@
+# frontent configmaps
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nodeapp-configmap
+  namespace: nodeapp-dev
+data:
+  NODEAPP_WEB_PORT: "81"
+  NODEAPP_DB_USER: "root"
+  NODEAPP_DB_NAME: "nodeapp"

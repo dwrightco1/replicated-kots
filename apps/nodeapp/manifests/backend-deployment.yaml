@@ -1,0 +1,43 @@
+# backend deployment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: nodeapp-dev
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:5.7
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - mountPath: "/var/lib/mysql"
+              subPath: "mysql"
+              name: mysql-data
+            - name: mysql-initdb
+              mountPath: /docker-entrypoint-initdb.d
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nodeapp-secrets
+                  key: NODEAPP_DB_PASSWORD
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-data-disk
+        - name: mysql-initdb
+          configMap:
+            name: mysql-initdb-config
