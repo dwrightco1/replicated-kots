@@ -2,7 +2,7 @@
 Notes from my evaluation of Replicated.Com's KOTS product.
 
 ## Evaluation Plan
-**1) Setup Dev Workstation**
+**1. Provision Dev Workstation**
 
 Using this [Vagrantfile](vagrant/Vagrantfile), use Vagrant to build a Dev Workstation running Ubuntu 18.04
 
@@ -15,7 +15,7 @@ The post-install for the Vagrant build includes:
 
 Once the Vagrant VM is ready, SSH to it and perform the remaining tasks from there.
 
-**2) Configure AWS Integration**
+**2. Configure AWS Integration**
 
 Configure the AWS Client to use your AWS account when provisioning resources:
 ```
@@ -26,7 +26,7 @@ Default region name [None]: us-east-1
 Default output format [None]: json
 ```
 
-**3) Provision an EKS Cluster on AWS**
+**3. Provision an EKS Cluster on AWS**
 
 Using [eks-deployer](https://github.com/dyvantage/eks-deployer), create a Kubernetes cluster (to run tests against):
 ```
@@ -79,12 +79,35 @@ IP Address (lo) = 127.0.0.1
 IP Address (eth0) = 10.0.2.235
 ```
 
+Validate the database connection string (i.e. which Pod is the back-end running on):
+```
+$ kubectl get pods -l app=mysql
+$ kubectl describe pod <>
+```
+
 Cleanup (delete all Kubernetes resources created by the installer)
 ```
 $ kubectl delete -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
 ```
 
-**N. Delete EKS Cluster**
+**5) Package [Sample Application](https://github.com/dwrightco1/nodeapp) Using Replicated KOTS**
+
+**5.1 Using [https://vendor.replicated.com](https://vendor.replicated.com), Create an Application**
+
+* Create an Application and get its `Application Slug`
+* Create an API Token (read/write access)
+
+**5.2 Configure & Validate Environment**
+
+```
+export REPLICATED_APP=<slug>
+export REPLICATED_API_TOKEN=<token>
+replicated release ls
+```
+
+**5.3 **
+
+**10. Delete EKS Cluster**
 
 IMPORTANT: don't forget this step -- it deletes all AWS resources created by the Terraform installer:
 ```
