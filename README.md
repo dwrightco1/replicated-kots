@@ -105,7 +105,25 @@ export REPLICATED_API_TOKEN=<token>
 replicated release ls
 ```
 
-**5.3 **
+**5.3 Clone Repository and Run Replicated Linter**
+
+```
+git clone https://github.com/dwrightco1/nodeapp-replicated.git ~/nodeapp-replicated
+cd ~/nodeapp-replicated
+replicated release lint --yaml-dir=manifests
+```
+
+Once the linter runs clean, performing the following steps to package:
+```
+replicated release create --auto
+replicated customer create --name "DyVantage" --expires-in "240h" --channel "Unstable"
+replicated customer download-license --customer DyVantage ~/DyVantage-${REPLICATED_APP}-license.yaml
+```
+
+Once the application is packaged, use this command to get the `installation strings` for each type of deployment:
+* `EXISTING` -- deploy against an existing Kubernetes cluster
+* `EMBEDDED` -- deploy a NEW Kubernetes cluster on a local machine (VM)
+* `AIRGAP` -- deploy in an Air-Gapped environment (i.e. no Internet connectivity)
 
 **10. Delete EKS Cluster**
 
