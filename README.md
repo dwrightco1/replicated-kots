@@ -105,7 +105,7 @@ export REPLICATED_API_TOKEN=<token>
 replicated release ls
 ```
 
-**5.3 Clone Repository and Run Replicated Linter**
+**5.3 Clone Repository, Run Linter, and Package Application**
 
 ```
 git clone https://github.com/dwrightco1/nodeapp-replicated.git ~/nodeapp-replicated
@@ -124,6 +124,45 @@ Once the application is packaged, use this command to get the `installation stri
 * `EXISTING` -- deploy against an existing Kubernetes cluster
 * `EMBEDDED` -- deploy a NEW Kubernetes cluster on a local machine (VM)
 * `AIRGAP` -- deploy in an Air-Gapped environment (i.e. no Internet connectivity)
+
+**5.3 Deploy Application (to existing EKS Cluster)**
+
+First, install KOTS (which is a Plugin for kubectl):
+```
+$ curl -fsSL https://kots.io/install | bash
+```
+
+Once installed, validate by running:
+```
+kubectl kots --help
+```
+
+Now you're ready to deploy KOTS infrastrucure to the cluster (and lets you specifiy a namespace):
+```
+kubectl kots install nodeapp/unstable
+```
+
+Now take a look at the Kubernetes objects associated with KOTS:
+```
+$ kubectl get deployments -n nodeapp-dev
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+kotsadm            1/1     1            1           5m13s
+kotsadm-operator   1/1     1            1           5m12s
+
+$ kubectl get services -n nodeapp-dev
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kotsadm            ClusterIP   172.20.247.97    <none>        3000/TCP   4m48s
+kotsadm-minio      ClusterIP   172.20.218.220   <none>        9000/TCP   6m5s
+kotsadm-postgres   ClusterIP   172.20.99.165    <none>        5432/TCP   6m4s
+
+$ kubectl get pods -n nodeapp-dev
+NAME                                READY   STATUS      RESTARTS   AGE
+kotsadm-6c586cbd84-mqnp8            1/1     Running     0          4m35s
+kotsadm-migrations-1606491633       0/1     Completed   0          5m1s
+kotsadm-minio-0                     1/1     Running     0          5m51s
+kotsadm-operator-7d86d48c46-q8bnp   1/1     Running     0          4m34s
+kotsadm-postgres-0                  1/1     Running     0          5m51s
+```
 
 **10. Delete EKS Cluster**
 
