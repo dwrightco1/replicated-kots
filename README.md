@@ -1,6 +1,11 @@
 # Replicated KOTS Evaluation
 Notes from my evaluation of Replicated.Com's KOTS product.
 
+## Questions / Comments
+
+1. Is the embedded installer omnipotent?  (It seems to download even if already downloaded)
+2. Is there a log for the embedded installer?
+
 ## Evaluation Plan
 **1. Provision Dev Workstation**
 
