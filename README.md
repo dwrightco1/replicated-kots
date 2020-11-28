@@ -130,9 +130,19 @@ replicated customer download-license --customer DyVantage ~/DyVantage-${REPLICAT
 
 Note: Try setting `--expires-in` to an hour (and learn the license renewal process)
 
-Once the application is packaged, use this command to get the `installation strings` for each type of deployment:
+To see the metadata for the various installation types (embedded, existing, air-gapped), run:
 ```
-replicated channel describe Unstable
+$ replicated channel inspect Unstable
+EXISTING:
+    curl -fsSL https://kots.io/install | bash
+    kubectl kots install nodeapp/unstable
+EMBEDDED:
+    curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
+AIRGAP:
+    curl -fSL -o nodeapp-unstable.tar.gz https://k8s.kurl.sh/bundle/nodeapp-unstable.tar.gz
+    # ... scp or sneakernet nodeapp-unstable.tar.gz to airgapped machine, then
+    tar xvf nodeapp-unstable.tar.gz
+    sudo bash ./install.sh airgap
 ```
 
 These are the different installation types:
