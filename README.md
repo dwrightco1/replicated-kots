@@ -9,7 +9,7 @@ Notes from my evaluation of Replicated.Com's KOTS product.
 
 ## Evaluation Plan
 **0. Installation Log**
-Here is the [Log](kots-install.log) from running the installer.
+Here is the [Log](kots-install.log) from running the embedded installer.
 
 **1. Provision Dev Workstation**
 
