@@ -1,19 +1,17 @@
 # Replicated KOTS Evaluation
 Notes from my evaluation of Replicated.Com's KOTS product.
 
-## Questions / Comments
+# Evaluation Plan
+I tested Replicated.Com's KOTS product using two (2) deployment types:
+* Embedded (Vagrant VM)
+* Existing (EKS Cluster on AWS)
 
-1. Is the embedded installer omnipotent?  (It seems to download even if already downloaded)
-2. Is there a log for the embedded installer?
-3. How do you configure serviceType Load-Balancer in embedded clusters?
+I used a [simple web application](https://github.com/dwrightco1/nodeapp) for testing.  The application has a front-end running Node.Js and a back-end running MySQL.
 
-## Evaluation Plan
-**0. Installation Log**
-Here is the [Log](kots-install.log) from running the embedded installer.
+For the Kotsadm `Configure Application` screen, I decided to add an option for exposing the front-end service as either a `LoadBalancer` or `NodePort`.  My assumption is that I'll be able to parameterize the user-select value into the `frontent-service.yaml` that manages access to the `frontend-deployment.yaml`.
 
-**1. Provision Dev Workstation**
-
-Using this [Vagrantfile](vagrant/Vagrantfile), use Vagrant to build a Dev Workstation running Ubuntu 18.04
+# Environment Setup
+I used this [Vagrantfile](vagrant/Vagrantfile) to build a Dev Workstation running Ubuntu 18.04.
 
 The post-install for the Vagrant build includes:
 * [configure-hostname.sh](vagrant/scripts/configure-hostname.sh)
@@ -24,6 +22,11 @@ The post-install for the Vagrant build includes:
 
 Once the Vagrant VM is ready, SSH to it and perform the remaining tasks from there.
 
+# Evaluation 1 : EMBEDDED CLUSTER
+
+# Evaluation 1 : EXISTING CLUSTER
+
+**Step 2: **
 **2. Configure AWS Integration**
 
 Configure the AWS Client to use your AWS account when provisioning resources:
@@ -59,7 +62,7 @@ ip-10-0-3-59.us-east-2.compute.internal    Ready    <none>   107s   v1.17.12-eks
 
 **4. Deploy 2-Tier Application (Web/Database)**
 
-Validate the new cluster by deploying a [Sample Application](https://github.com/dwrightco1/nodeapp).  This is a simple Node.js application with a MySQL database back-end.
+Validate the new cluster by deploying a [Sample Application](https://github.com/dwrightco1/nodeapp-replicated).  This is a simple Node.js application with a MySQL database back-end.
 ```
 kubectl apply -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
 ```
@@ -232,6 +235,9 @@ Something to watch out for: if you create an AWS resource through Kubernetes (li
 
 ## Comments/Observations
 1. When extracting the replicated-cli package, it didn't extract to a subdiretory (and it override the README.md in the current directory)
+2. Is the embedded installer omnipotent?  (It seems to download even if already downloaded)
+3. Is there a log for the embedded installer?
+4. How do you configure serviceType Load-Balancer in embedded clusters?
 
 ## Documentation Bugs
 1. URL = https://kots.io/vendor/guides/quickstart
