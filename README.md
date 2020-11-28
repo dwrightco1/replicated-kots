@@ -7,6 +7,9 @@ Notes from my evaluation of Replicated.Com's KOTS product.
 2. Is there a log for the embedded installer?
 
 ## Evaluation Plan
+**0. Installation Log**
+Here is the [Log](kots-install.log) from running the installer.
+
 **1. Provision Dev Workstation**
 
 Using this [Vagrantfile](vagrant/Vagrantfile), use Vagrant to build a Dev Workstation running Ubuntu 18.04
@@ -99,8 +102,8 @@ $ kubectl delete -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/
 
 **5.1 Using [https://vendor.replicated.com](https://vendor.replicated.com), Create an Application**
 
-* Create an Application and get its `Application Slug`
-* Create an API Token (read/write access)
+* Create an Application and get its `Slug`
+* Create an API Token (with read/write access)
 
 **5.2 Configure & Validate Environment**
 
@@ -125,12 +128,19 @@ replicated customer create --name "DyVantage" --expires-in "240h" --channel "Uns
 replicated customer download-license --customer DyVantage ~/DyVantage-${REPLICATED_APP}-license.yaml
 ```
 
+Note: Try setting `--expires-in` to an hour (and learn the license renewal process)
+
 Once the application is packaged, use this command to get the `installation strings` for each type of deployment:
+```
+replicated channel describe Unstable
+```
+
+These are the different installation types:
 * `EXISTING` -- deploy against an existing Kubernetes cluster
 * `EMBEDDED` -- deploy a NEW Kubernetes cluster on a local machine (VM)
 * `AIRGAP` -- deploy in an Air-Gapped environment (i.e. no Internet connectivity)
 
-**5.3 Deploy Application (to existing EKS Cluster)**
+**5.3 Deploy Application to *EXISTING EKS CLUSTER*)**
 
 First, install KOTS (which is a Plugin for kubectl):
 ```
@@ -142,10 +152,12 @@ Once installed, validate by running:
 kubectl kots --help
 ```
 
-Now you're ready to deploy KOTS infrastrucure to the cluster (and lets you specifiy a namespace):
+Now you're ready to deploy KOTS infrastrucure to the cluster:
 ```
 kubectl kots install nodeapp/unstable
 ```
+
+Note: it prompts for a namespace to deploy the application to, which is why the linter flags hard-coded namespaces.
 
 Now take a look at the Kubernetes objects associated with KOTS:
 ```
@@ -169,7 +181,36 @@ kotsadm-operator-7d86d48c46-q8bnp   1/1     Running     0          4m34s
 kotsadm-postgres-0                  1/1     Running     0          5m51s
 ```
 
-**10. Delete EKS Cluster**
+**5.4 Deploy Application to *EMBEDDED CLUSTER*)**
+
+Post-Install Configs for VM or Bare-Metal cluster node:
+* Make sure the hostname is set and resolvable in local /etc/hosts
+* Make sure NTS is configured and working (I experienced curl TLS-related errors due to time drift)
+
+**5.4.1 Install Kubernetes Cluster (Embedded)**
+To install Kubernetes components, run:
+```
+curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
+```
+
+Here is a [sample log](kots-install.log) from the embedded installer.
+
+**5.4.2 Configure Kubectl **
+To configure `kubectl` to operate against the cluster, run:
+```
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+To validate, run:
+```
+$ kubectl get nodes
+NAME   STATUS   ROLES    AGE   VERSION
+kots   Ready    master   50m   v1.19.3
+```
+
+**6. Delete EKS Cluster**
 
 IMPORTANT: don't forget this step -- it deletes all AWS resources created by the Terraform installer:
 ```

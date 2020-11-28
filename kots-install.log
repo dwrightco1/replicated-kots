@@ -1,0 +1,747 @@
+$ sudo bash nodeapp-unstable
+Docker already exists on this machine so no docker install will be performed
+Containerd already exists on this machine so no containerd install will be performed
+The installer was unable to automatically detect the private IP address of this machine.
+Please choose one of the following network interfaces:
+[0] eth0 	10.0.2.15
+[1] eth1 	192.168.64.17
+Enter desired number (0-1): 1
+The installer will use network interface 'eth1' (with IP address '192.168.64.17').
+Fetching weave-2.6.5.tar.gz
+Fetching rook-1.0.4.tar.gz
+Fetching contour-1.7.0.tar.gz
+Fetching registry-2.7.1.tar.gz
+Fetching prometheus-0.33.0.tar.gz
+Fetching kotsadm-1.24.1.tar.gz
+Fetching ekco-0.7.0.tar.gz
+Found pod network: 10.32.0.0/22
+Found service network: 10.96.0.0/22
+Loaded image: replicated/kurl-util:v2020.11.25-1
+⚙  Install kubelet, kubeadm, kubectl and cni host packages
+kubelet command missing - will install host components
+Selecting previously unselected package conntrack.
+(Reading database ... 43156 files and directories currently installed.)
+Preparing to unpack .../conntrack_1%3a1.4.4+snapshot20161117-6ubuntu2_amd64.deb ...
+Unpacking conntrack (1:1.4.4+snapshot20161117-6ubuntu2) ...
+Selecting previously unselected package cri-tools.
+Preparing to unpack .../cri-tools_1.13.0-01_amd64.deb ...
+Unpacking cri-tools (1.13.0-01) ...
+Preparing to unpack .../ebtables_2.0.10.4-3.5ubuntu2.18.04.3_amd64.deb ...
+Unpacking ebtables (2.0.10.4-3.5ubuntu2.18.04.3) over (2.0.10.4-3.5ubuntu2.18.04.3) ...
+Preparing to unpack .../ethtool_1%3a4.15-0ubuntu1_amd64.deb ...
+Unpacking ethtool (1:4.15-0ubuntu1) over (1:4.15-0ubuntu1) ...
+Preparing to unpack .../git_1%3a2.17.1-1ubuntu0.7_amd64.deb ...
+Unpacking git (1:2.17.1-1ubuntu0.7) over (1:2.17.1-1ubuntu0.7) ...
+Preparing to unpack .../git-man_1%3a2.17.1-1ubuntu0.7_all.deb ...
+Unpacking git-man (1:2.17.1-1ubuntu0.7) over (1:2.17.1-1ubuntu0.7) ...
+Preparing to unpack .../iproute2_4.15.0-2ubuntu1.2_amd64.deb ...
+Unpacking iproute2 (4.15.0-2ubuntu1.2) over (4.15.0-2ubuntu1) ...
+Preparing to unpack .../iptables_1.6.1-2ubuntu2_amd64.deb ...
+Unpacking iptables (1.6.1-2ubuntu2) over (1.6.1-2ubuntu2) ...
+Preparing to unpack .../kmod_24-1ubuntu3.5_amd64.deb ...
+Unpacking kmod (24-1ubuntu3.5) over (24-1ubuntu3.2) ...
+Selecting previously unselected package kubeadm.
+Preparing to unpack .../kubeadm_1.19.3-00_amd64.deb ...
+Unpacking kubeadm (1.19.3-00) ...
+dpkg: warning: downgrading kubectl from 1.19.4-00 to 1.19.3-00
+Preparing to unpack .../kubectl_1.19.3-00_amd64.deb ...
+Unpacking kubectl (1.19.3-00) over (1.19.4-00) ...
+Selecting previously unselected package kubelet.
+Preparing to unpack .../kubelet_1.19.3-00_amd64.deb ...
+Unpacking kubelet (1.19.3-00) ...
+Selecting previously unselected package kubernetes-cni.
+Preparing to unpack .../kubernetes-cni_0.8.7-00_amd64.deb ...
+Unpacking kubernetes-cni (0.8.7-00) ...
+Preparing to unpack .../less_487-0.1_amd64.deb ...
+Unpacking less (487-0.1) over (487-0.1) ...
+Preparing to unpack .../libatm1_1%3a2.5.1-2build1_amd64.deb ...
+Unpacking libatm1:amd64 (1:2.5.1-2build1) over (1:2.5.1-2build1) ...
+Preparing to unpack .../libbsd0_0.8.7-1ubuntu0.1_amd64.deb ...
+Unpacking libbsd0:amd64 (0.8.7-1ubuntu0.1) over (0.8.7-1ubuntu0.1) ...
+Preparing to unpack .../libcurl3-gnutls_7.58.0-2ubuntu3.10_amd64.deb ...
+Unpacking libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.10) over (7.58.0-2ubuntu3.10) ...
+Preparing to unpack .../libedit2_3.1-20170329-1_amd64.deb ...
+Unpacking libedit2:amd64 (3.1-20170329-1) over (3.1-20170329-1) ...
+Preparing to unpack .../libelf1_0.170-0.4ubuntu0.1_amd64.deb ...
+Unpacking libelf1:amd64 (0.170-0.4ubuntu0.1) over (0.170-0.4ubuntu0.1) ...
+Preparing to unpack .../liberror-perl_0.17025-1_all.deb ...
+Unpacking liberror-perl (0.17025-1) over (0.17025-1) ...
+Preparing to unpack .../libexpat1_2.2.5-3ubuntu0.2_amd64.deb ...
+Unpacking libexpat1:amd64 (2.2.5-3ubuntu0.2) over (2.2.5-3ubuntu0.1) ...
+Preparing to unpack .../libgdbm5_1.14.1-6_amd64.deb ...
+Unpacking libgdbm5:amd64 (1.14.1-6) over (1.14.1-6) ...
+Preparing to unpack .../libgdbm-compat4_1.14.1-6_amd64.deb ...
+Unpacking libgdbm-compat4:amd64 (1.14.1-6) over (1.14.1-6) ...
+Preparing to unpack .../libip4tc0_1.6.1-2ubuntu2_amd64.deb ...
+Unpacking libip4tc0:amd64 (1.6.1-2ubuntu2) over (1.6.1-2ubuntu2) ...
+Preparing to unpack .../libip6tc0_1.6.1-2ubuntu2_amd64.deb ...
+Unpacking libip6tc0:amd64 (1.6.1-2ubuntu2) over (1.6.1-2ubuntu2) ...
+Preparing to unpack .../libiptc0_1.6.1-2ubuntu2_amd64.deb ...
+Unpacking libiptc0:amd64 (1.6.1-2ubuntu2) over (1.6.1-2ubuntu2) ...
+Preparing to unpack .../libkmod2_24-1ubuntu3.5_amd64.deb ...
+Unpacking libkmod2:amd64 (24-1ubuntu3.5) over (24-1ubuntu3.2) ...
+Preparing to unpack .../libmnl0_1.0.4-2_amd64.deb ...
+Unpacking libmnl0:amd64 (1.0.4-2) over (1.0.4-2) ...
+Preparing to unpack .../libnetfilter-conntrack3_1.0.6-2_amd64.deb ...
+Unpacking libnetfilter-conntrack3:amd64 (1.0.6-2) over (1.0.6-2) ...
+Preparing to unpack .../libnfnetlink0_1.0.1-3_amd64.deb ...
+Unpacking libnfnetlink0:amd64 (1.0.1-3) over (1.0.1-3) ...
+Preparing to unpack .../libperl5.26_5.26.1-6ubuntu0.5_amd64.deb ...
+Unpacking libperl5.26:amd64 (5.26.1-6ubuntu0.5) over (5.26.1-6ubuntu0.5) ...
+Preparing to unpack .../libssl1.0.0_1.0.2n-1ubuntu5.4_amd64.deb ...
+Unpacking libssl1.0.0:amd64 (1.0.2n-1ubuntu5.4) over (1.0.2n-1ubuntu5.4) ...
+Preparing to unpack .../libwrap0_7.6.q-27_amd64.deb ...
+Unpacking libwrap0:amd64 (7.6.q-27) over (7.6.q-27) ...
+Preparing to unpack .../libx11-6_2%3a1.6.4-3ubuntu0.3_amd64.deb ...
+Unpacking libx11-6:amd64 (2:1.6.4-3ubuntu0.3) over (2:1.6.4-3ubuntu0.3) ...
+Preparing to unpack .../libx11-data_2%3a1.6.4-3ubuntu0.3_all.deb ...
+Unpacking libx11-data (2:1.6.4-3ubuntu0.3) over (2:1.6.4-3ubuntu0.3) ...
+Preparing to unpack .../libxau6_1%3a1.0.8-1ubuntu1_amd64.deb ...
+Unpacking libxau6:amd64 (1:1.0.8-1ubuntu1) over (1:1.0.8-1ubuntu1) ...
+Preparing to unpack .../libxcb1_1.13-2~ubuntu18.04_amd64.deb ...
+Unpacking libxcb1:amd64 (1.13-2~ubuntu18.04) over (1.13-2~ubuntu18.04) ...
+Preparing to unpack .../libxdmcp6_1%3a1.1.2-3_amd64.deb ...
+Unpacking libxdmcp6:amd64 (1:1.1.2-3) over (1:1.1.2-3) ...
+Preparing to unpack .../libxext6_2%3a1.3.3-1_amd64.deb ...
+Unpacking libxext6:amd64 (2:1.3.3-1) over (2:1.3.3-1) ...
+Preparing to unpack .../libxmuu1_2%3a1.1.2-2_amd64.deb ...
+Unpacking libxmuu1:amd64 (2:1.1.2-2) over (2:1.1.2-2) ...
+Preparing to unpack .../libxtables12_1.6.1-2ubuntu2_amd64.deb ...
+Unpacking libxtables12:amd64 (1.6.1-2ubuntu2) over (1.6.1-2ubuntu2) ...
+Preparing to unpack .../multiarch-support_2.27-3ubuntu1.3_amd64.deb ...
+Unpacking multiarch-support (2.27-3ubuntu1.3) over (2.27-3ubuntu1.3) ...
+Preparing to unpack .../netbase_5.4_all.deb ...
+Unpacking netbase (5.4) over (5.4) ...
+Preparing to unpack .../openssh-client_1%3a7.6p1-4ubuntu0.3_amd64.deb ...
+Unpacking openssh-client (1:7.6p1-4ubuntu0.3) over (1:7.6p1-4ubuntu0.3) ...
+Preparing to unpack .../patch_2.7.6-2ubuntu1.1_amd64.deb ...
+Unpacking patch (2.7.6-2ubuntu1.1) over (2.7.6-2ubuntu1.1) ...
+Preparing to unpack .../perl_5.26.1-6ubuntu0.5_amd64.deb ...
+Unpacking perl (5.26.1-6ubuntu0.5) over (5.26.1-6ubuntu0.5) ...
+Preparing to unpack .../perl-modules-5.26_5.26.1-6ubuntu0.5_all.deb ...
+Unpacking perl-modules-5.26 (5.26.1-6ubuntu0.5) over (5.26.1-6ubuntu0.5) ...
+Selecting previously unselected package socat.
+Preparing to unpack .../socat_1.7.3.2-2ubuntu2_amd64.deb ...
+Unpacking socat (1.7.3.2-2ubuntu2) ...
+Preparing to unpack .../xauth_1%3a1.0.10-1_amd64.deb ...
+Unpacking xauth (1:1.0.10-1) over (1:1.0.10-1) ...
+Setting up cri-tools (1.13.0-01) ...
+Setting up ebtables (2.0.10.4-3.5ubuntu2.18.04.3) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up ethtool (1:4.15-0ubuntu1) ...
+Setting up git-man (1:2.17.1-1ubuntu0.7) ...
+Setting up kubectl (1.19.3-00) ...
+Setting up kubernetes-cni (0.8.7-00) ...
+Setting up less (487-0.1) ...
+Setting up libatm1:amd64 (1:2.5.1-2build1) ...
+Setting up libbsd0:amd64 (0.8.7-1ubuntu0.1) ...
+Setting up libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.10) ...
+Setting up libedit2:amd64 (3.1-20170329-1) ...
+Setting up libelf1:amd64 (0.170-0.4ubuntu0.1) ...
+Setting up libexpat1:amd64 (2.2.5-3ubuntu0.2) ...
+Setting up libgdbm5:amd64 (1.14.1-6) ...
+Setting up libgdbm-compat4:amd64 (1.14.1-6) ...
+Setting up libip4tc0:amd64 (1.6.1-2ubuntu2) ...
+Setting up libip6tc0:amd64 (1.6.1-2ubuntu2) ...
+Setting up libiptc0:amd64 (1.6.1-2ubuntu2) ...
+Setting up libkmod2:amd64 (24-1ubuntu3.5) ...
+Setting up libmnl0:amd64 (1.0.4-2) ...
+Setting up libssl1.0.0:amd64 (1.0.2n-1ubuntu5.4) ...
+Setting up libwrap0:amd64 (7.6.q-27) ...
+Setting up libx11-data (2:1.6.4-3ubuntu0.3) ...
+Setting up libxau6:amd64 (1:1.0.8-1ubuntu1) ...
+Setting up libxdmcp6:amd64 (1:1.1.2-3) ...
+Setting up libxtables12:amd64 (1.6.1-2ubuntu2) ...
+Setting up multiarch-support (2.27-3ubuntu1.3) ...
+Setting up netbase (5.4) ...
+Setting up openssh-client (1:7.6p1-4ubuntu0.3) ...
+Setting up patch (2.7.6-2ubuntu1.1) ...
+Setting up perl-modules-5.26 (5.26.1-6ubuntu0.5) ...
+Setting up socat (1.7.3.2-2ubuntu2) ...
+Setting up iproute2 (4.15.0-2ubuntu1.2) ...
+Setting up kmod (24-1ubuntu3.5) ...
+Installing new version of config file /etc/modprobe.d/blacklist-framebuffer.conf ...
+Setting up libnfnetlink0:amd64 (1.0.1-3) ...
+Setting up libperl5.26:amd64 (5.26.1-6ubuntu0.5) ...
+Setting up libxcb1:amd64 (1.13-2~ubuntu18.04) ...
+Setting up libnetfilter-conntrack3:amd64 (1.0.6-2) ...
+Setting up libx11-6:amd64 (2:1.6.4-3ubuntu0.3) ...
+Setting up libxext6:amd64 (2:1.3.3-1) ...
+Setting up libxmuu1:amd64 (2:1.1.2-2) ...
+Setting up xauth (1:1.0.10-1) ...
+Setting up conntrack (1:1.4.4+snapshot20161117-6ubuntu2) ...
+Setting up iptables (1.6.1-2ubuntu2) ...
+Setting up kubelet (1.19.3-00) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/kubelet.service → /lib/systemd/system/kubelet.service.
+Setting up kubeadm (1.19.3-00) ...
+dpkg: perl: dependency problems, but configuring anyway as you requested:
+ perl depends on perl-base (= 5.26.1-6ubuntu0.5); however:
+  Version of perl-base on system is 5.26.1-6ubuntu0.3.
+
+Setting up perl (5.26.1-6ubuntu0.5) ...
+Setting up liberror-perl (0.17025-1) ...
+Setting up git (1:2.17.1-1ubuntu0.7) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for systemd (237-3ubuntu10.25) ...
+Processing triggers for ureadahead (0.100.0-21) ...
+Processing triggers for mime-support (3.60ubuntu1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+✔ Kubernetes host packages installed
+79d541cda6cb: Loading layer [==================================================>]  3.041MB/3.041MB
+c12e92a17b61: Loading layer [==================================================>]  1.734MB/1.734MB
+4b5c08158bcb: Loading layer [==================================================>]  115.3MB/115.3MB
+Loaded image: k8s.gcr.io/kube-apiserver:v1.19.3
+ba0dae6243cc: Loading layer [==================================================>]  684.5kB/684.5kB
+Loaded image: k8s.gcr.io/pause:3.2
+91e3a07063b3: Loading layer [==================================================>]  53.89MB/53.89MB
+b4e54f331697: Loading layer [==================================================>]  21.78MB/21.78MB
+b9b82a97c787: Loading layer [==================================================>]  5.168MB/5.168MB
+1b55846906e8: Loading layer [==================================================>]  4.608kB/4.608kB
+061bfb5cb861: Loading layer [==================================================>]  8.192kB/8.192kB
+78dd6c0504a7: Loading layer [==================================================>]  8.704kB/8.704kB
+f1b0b899d419: Loading layer [==================================================>]  38.81MB/38.81MB
+Loaded image: k8s.gcr.io/kube-proxy:v1.19.3
+d72a74c56330: Loading layer [==================================================>]  3.031MB/3.031MB
+d61c79b29299: Loading layer [==================================================>]   2.13MB/2.13MB
+1a4e46412eb0: Loading layer [==================================================>]  225.3MB/225.3MB
+bfa5849f3d09: Loading layer [==================================================>]   2.19MB/2.19MB
+bb63b9467928: Loading layer [==================================================>]  21.98MB/21.98MB
+Loaded image: k8s.gcr.io/etcd:3.4.13-0
+f9b944e24088: Loading layer [==================================================>]  107.3MB/107.3MB
+Loaded image: k8s.gcr.io/kube-controller-manager:v1.19.3
+94bd98e8a8a9: Loading layer [==================================================>]  42.13MB/42.13MB
+Loaded image: k8s.gcr.io/kube-scheduler:v1.19.3
+225df95e717c: Loading layer [==================================================>]  336.4kB/336.4kB
+96d17b0b58a7: Loading layer [==================================================>]  45.02MB/45.02MB
+Loaded image: k8s.gcr.io/coredns:1.7.0
+~/kots/krew ~/kots
+LICENSE
+README.md
+outdated
+LICENSE
+README.md
+preflight
+LICENSE
+README.md
+support-bundle
+~/kots
+1b3ee35aacca: Loading layer [==================================================>]   5.84MB/5.84MB
+d615ff8a8b30: Loading layer [==================================================>]  25.98MB/25.98MB
+628582338fd9: Loading layer [==================================================>]  40.27MB/40.27MB
+99ded6e90656: Loading layer [==================================================>]  27.55MB/27.55MB
+17afde73a72e: Loading layer [==================================================>]   2.56kB/2.56kB
+8b9d12e01979: Loading layer [==================================================>]  24.58MB/24.58MB
+Loaded image: weaveworks/weave-kube:2.6.5
+998efb010df6: Loading layer [==================================================>]  3.387MB/3.387MB
+c9a6ec84699c: Loading layer [==================================================>]  27.95MB/27.95MB
+c7feea0f1c0a: Loading layer [==================================================>]   2.56kB/2.56kB
+c099d6a1b2c0: Loading layer [==================================================>]  4.096kB/4.096kB
+Loaded image: weaveworks/weave-npc:2.6.5
+c4992c0b402a: Loading layer [==================================================>]  1.679MB/1.679MB
+d174c4b2889a: Loading layer [==================================================>]  23.57MB/23.57MB
+22f96ebe9606: Loading layer [==================================================>]  1.547MB/1.547MB
+7c269c64f189: Loading layer [==================================================>]  23.56MB/23.56MB
+Loaded image: weaveworks/weaveexec:2.6.5
+d69483a6face: Loading layer [==================================================>]  209.5MB/209.5MB
+4375c9bb2876: Loading layer [==================================================>]  566.7MB/566.7MB
+Loaded image: ceph/ceph:v14.2.0-20190410
+26ca056a1035: Loading layer [==================================================>]  667.1MB/667.1MB
+818683da6b19: Loading layer [==================================================>]  44.54kB/44.54kB
+af6dc84f116c: Loading layer [==================================================>]  70.43MB/70.43MB
+fb807c83a4e4: Loading layer [==================================================>]  20.99kB/20.99kB
+Loaded image: rook/ceph:v1.0.4
+b6257b41252f: Loading layer [==================================================>]  37.93MB/37.93MB
+Loaded image: projectcontour/contour:v1.7.0
+88cc1a200eb9: Loading layer [==================================================>]  65.61MB/65.61MB
+bf509d6bc5ec: Loading layer [==================================================>]  991.7kB/991.7kB
+2af0e1f1e531: Loading layer [==================================================>]  15.87kB/15.87kB
+4b07a7bca5b7: Loading layer [==================================================>]  3.072kB/3.072kB
+a446c4570965: Loading layer [==================================================>]  23.61MB/23.61MB
+35dd50d71525: Loading layer [==================================================>]  16.38kB/16.38kB
+4ba9bd3b9f05: Loading layer [==================================================>]  55.81kB/55.81kB
+ba85d28ac9a9: Loading layer [==================================================>]  2.048kB/2.048kB
+320347174bc2: Loading layer [==================================================>]  40.09MB/40.09MB
+5cc0e259f85b: Loading layer [==================================================>]  4.608kB/4.608kB
+f44dcdf6e58d: Loading layer [==================================================>]   2.56kB/2.56kB
+Loaded image: envoyproxy/envoy:v1.15.0
+3e207b409db3: Loading layer [==================================================>]  5.879MB/5.879MB
+f5b9430e0e42: Loading layer [==================================================>]  817.2kB/817.2kB
+239a096513b5: Loading layer [==================================================>]  20.08MB/20.08MB
+a5f27630cdd9: Loading layer [==================================================>]  3.584kB/3.584kB
+b3f465d7c4d1: Loading layer [==================================================>]  2.048kB/2.048kB
+Loaded image: registry:2.7.1
+8a788232037e: Loading layer [==================================================>]   1.37MB/1.37MB
+cd05ae2f58b4: Loading layer [==================================================>]   37.2MB/37.2MB
+Loaded image: k8s.gcr.io/addon-resizer:1.8.4
+a724badf61ce: Loading layer [==================================================>]  1.425MB/1.425MB
+a135773ab4c8: Loading layer [==================================================>]  2.627MB/2.627MB
+5858aa1caa48: Loading layer [==================================================>]  76.32MB/76.32MB
+495a19a962c5: Loading layer [==================================================>]  46.67MB/46.67MB
+483b2ba761c7: Loading layer [==================================================>]  3.584kB/3.584kB
+b1f92c6d4068: Loading layer [==================================================>]  13.31kB/13.31kB
+97c86534d863: Loading layer [==================================================>]  28.16kB/28.16kB
+d2cacb77d93d: Loading layer [==================================================>]  3.072kB/3.072kB
+799a04338fc1: Loading layer [==================================================>]   5.12kB/5.12kB
+Loaded image: quay.io/prometheus/prometheus:v2.11.0
+6270adb5794c: Loading layer [==================================================>]  58.45MB/58.45MB
+9871c21d3bdf: Loading layer [==================================================>]  3.072kB/3.072kB
+3e36146153a9: Loading layer [==================================================>]  24.75MB/24.75MB
+4155cf44b11c: Loading layer [==================================================>]  170.5MB/170.5MB
+9ed438ff1909: Loading layer [==================================================>]  196.6kB/196.6kB
+0cd0d98c3ece: Loading layer [==================================================>]   5.12kB/5.12kB
+Loaded image: grafana/grafana:6.2.2
+7bff100f35cb: Loading layer [==================================================>]  4.672MB/4.672MB
+e9f0f02bc156: Loading layer [==================================================>]  840.2kB/840.2kB
+2ad89e029676: Loading layer [==================================================>]  36.35MB/36.35MB
+Loaded image: quay.io/coreos/kube-rbac-proxy:v0.4.1
+7c3fbc1a45e2: Loading layer [==================================================>]  59.59MB/59.59MB
+Loaded image: quay.io/coreos/k8s-prometheus-adapter-amd64:v0.4.1
+1660e4ef8e72: Loading layer [==================================================>]  22.31MB/22.31MB
+d8a26634229b: Loading layer [==================================================>]   26.9MB/26.9MB
+d56a80b83a4c: Loading layer [==================================================>]  3.072kB/3.072kB
+96d25d0e9121: Loading layer [==================================================>]  3.584kB/3.584kB
+Loaded image: quay.io/prometheus/alertmanager:v0.18.0
+01092e5921c5: Loading layer [==================================================>]  3.062MB/3.062MB
+54f8fb5e92b3: Loading layer [==================================================>]  31.29MB/31.29MB
+a55264734a37: Loading layer [==================================================>]  3.584kB/3.584kB
+Loaded image: quay.io/coreos/kube-state-metrics:v1.7.2
+6194458b07fc: Loading layer [==================================================>]  1.441MB/1.441MB
+3163e6173fcc: Loading layer [==================================================>]  2.627MB/2.627MB
+23aad941b5d7: Loading layer [==================================================>]   39.4MB/39.4MB
+Loaded image: quay.io/coreos/prometheus-operator:v0.33.0
+975e03895fb7: Loading layer [==================================================>]  4.688MB/4.688MB
+f9fe8137e4e3: Loading layer [==================================================>]  2.765MB/2.765MB
+78f40987f0cd: Loading layer [==================================================>]  16.88MB/16.88MB
+Loaded image: quay.io/prometheus/node-exporter:v0.18.1
+283097ebe932: Loading layer [==================================================>]  7.477MB/7.477MB
+c6341ef123e8: Loading layer [==================================================>]  7.477MB/7.477MB
+Loaded image: quay.io/coreos/prometheus-config-reloader:v0.33.0
+91bd48b9e0b0: Loading layer [==================================================>]  4.787MB/4.787MB
+5f70bf18a086: Loading layer [==================================================>]  1.024kB/1.024kB
+Loaded image: quay.io/coreos/configmap-reload:v0.0.1
+8354d5896557: Loading layer [==================================================>]  105.6MB/105.6MB
+b67acaeed972: Loading layer [==================================================>]  29.94MB/29.94MB
+e593c26e3622: Loading layer [==================================================>]  24.06MB/24.06MB
+e2a6afa67269: Loading layer [==================================================>]  345.6kB/345.6kB
+aad0df7107a1: Loading layer [==================================================>]  34.82kB/34.82kB
+Loaded image: kotsadm/kotsadm-migrations:v1.24.1
+4d3dd4268d84: Loading layer [==================================================>]  58.51MB/58.51MB
+e2acc79042ef: Loading layer [==================================================>]  122.5MB/122.5MB
+5615fda25fee: Loading layer [==================================================>]   35.8MB/35.8MB
+89becc6da22e: Loading layer [==================================================>]  345.6kB/345.6kB
+ec10000cd032: Loading layer [==================================================>]  2.048kB/2.048kB
+0c3ac3302ab4: Loading layer [==================================================>]  2.048kB/2.048kB
+930a7d65ab8d: Loading layer [==================================================>]   2.56kB/2.56kB
+a876c55bb283: Loading layer [==================================================>]  69.14MB/69.14MB
+38621e8ccd33: Loading layer [==================================================>]  51.76MB/51.76MB
+Loaded image: kotsadm/kotsadm:v1.24.1
+18bb215e65b1: Loading layer [==================================================>]  83.74MB/83.74MB
+c5356a5e8ce8: Loading layer [==================================================>]  345.6kB/345.6kB
+e3dacdfbc158: Loading layer [==================================================>]  30.98MB/30.98MB
+e3cb60bd8fc7: Loading layer [==================================================>]    491kB/491kB
+Loaded image: kotsadm/kurl-proxy:v1.24.1
+b84eb064ec70: Loading layer [==================================================>]  83.74MB/83.74MB
+e63f5b191353: Loading layer [==================================================>]  43.12MB/43.12MB
+1ab04e32c48c: Loading layer [==================================================>]  46.68MB/46.68MB
+d6474236a153: Loading layer [==================================================>]  43.52MB/43.52MB
+8360de915782: Loading layer [==================================================>]  44.05MB/44.05MB
+026f5f8a9af0: Loading layer [==================================================>]  43.01MB/43.01MB
+0564c5f1761c: Loading layer [==================================================>]  345.6kB/345.6kB
+b00372266101: Loading layer [==================================================>]  2.048kB/2.048kB
+3d9b161b2fc7: Loading layer [==================================================>]  65.15MB/65.15MB
+a7e6adcd9c6b: Loading layer [==================================================>]  31.96MB/31.96MB
+cf3889e811eb: Loading layer [==================================================>]  57.17MB/57.17MB
+1dfdb9252fc8: Loading layer [==================================================>]  57.57MB/57.57MB
+Loaded image: kotsadm/kotsadm-operator:v1.24.1
+1e1890158369: Loading layer [==================================================>]  10.44MB/10.44MB
+8700c6d5f108: Loading layer [==================================================>]  339.5kB/339.5kB
+b4505242243c: Loading layer [==================================================>]  4.068MB/4.068MB
+8ffc50431e46: Loading layer [==================================================>]   17.1MB/17.1MB
+268417188696: Loading layer [==================================================>]  1.103MB/1.103MB
+da1749281c4c: Loading layer [==================================================>]  1.536kB/1.536kB
+804abd5012d6: Loading layer [==================================================>]  8.704kB/8.704kB
+525a75a6aa3c: Loading layer [==================================================>]  145.7MB/145.7MB
+43bc59458e75: Loading layer [==================================================>]  54.27kB/54.27kB
+c061eb8a80de: Loading layer [==================================================>]  2.048kB/2.048kB
+f35e5463515c: Loading layer [==================================================>]  3.072kB/3.072kB
+616901c6eb6b: Loading layer [==================================================>]  8.704kB/8.704kB
+945a9e3dea30: Loading layer [==================================================>]  1.536kB/1.536kB
+Loaded image: postgres:10.7
+d0fe97fa8b8c: Loading layer [==================================================>]  72.49MB/72.49MB
+cd9d05dbcd40: Loading layer [==================================================>]  47.87MB/47.87MB
+Loaded image: replicated/ekco:v0.7.0
+⚙  Initialize Kubernetes
+⚙  generate kubernetes bootstrap token
+Kubernetes bootstrap token: uprhn7.xd7u8q6nazic5qkm
+This token will expire in 24 hours
+W1128 16:18:38.646226    6606 configset.go:348] WARNING: kubeadm cannot validate component configs for API groups [kubelet.config.k8s.io kubeproxy.config.k8s.io]
+[init] Using Kubernetes version: v1.19.3
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[certs] Using certificateDir folder "/etc/kubernetes/pki"
+[certs] Generating "ca" certificate and key
+[certs] Generating "apiserver" certificate and key
+[certs] apiserver serving cert is signed for DNS names [kots kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 192.168.64.17]
+[certs] Generating "apiserver-kubelet-client" certificate and key
+[certs] Generating "front-proxy-ca" certificate and key
+[certs] Generating "front-proxy-client" certificate and key
+[certs] Generating "etcd/ca" certificate and key
+[certs] Generating "etcd/server" certificate and key
+[certs] etcd/server serving cert is signed for DNS names [kots localhost] and IPs [192.168.64.17 127.0.0.1 ::1]
+[certs] Generating "etcd/peer" certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [kots localhost] and IPs [192.168.64.17 127.0.0.1 ::1]
+[certs] Generating "etcd/healthcheck-client" certificate and key
+[certs] Generating "apiserver-etcd-client" certificate and key
+[certs] Generating "sa" key and public key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Starting the kubelet
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[apiclient] All control plane components are healthy after 18.504507 seconds
+[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+[kubelet] Creating a ConfigMap "kubelet-config-1.19" in namespace kube-system with the configuration for the kubelets in the cluster
+[upload-certs] Skipping phase. Please see --upload-certs
+[mark-control-plane] Marking the node kots as control-plane by adding the label "node-role.kubernetes.io/master=''"
+[bootstrap-token] Using token: uprhn7.xd7u8q6nazic5qkm
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to get nodes
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstrap-token] Creating the "cluster-info" ConfigMap in the "kube-public" namespace
+[kubelet-finalize] Updating "/etc/kubernetes/kubelet.conf" to point to a rotatable kubelet client certificate and key
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.64.17:6443 --token uprhn7.xd7u8q6nazic5qkm \
+    --discovery-token-ca-cert-hash sha256:8a394e37ec75f904fb8812cd8f66eb8b11660c5480d19a3236979e83a9550299
+✔ Kubernetes Master Initialized
+Kubernetes master is running at https://192.168.64.17:6443
+KubeDNS is running at https://192.168.64.17:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+✔ Cluster Initialized
+Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use apiextensions.k8s.io/v1 CustomResourceDefinition
+customresourcedefinition.apiextensions.k8s.io/installers.cluster.kurl.sh created
+installer.cluster.kurl.sh/nodeapp-unstable created
+installer.cluster.kurl.sh/nodeapp-unstable labeled
+⚙  Addon weave 2.6.5
+serviceaccount/weave-net created
+role.rbac.authorization.k8s.io/weave-net created
+clusterrole.rbac.authorization.k8s.io/weave-net created
+rolebinding.rbac.authorization.k8s.io/weave-net created
+clusterrolebinding.rbac.authorization.k8s.io/weave-net created
+secret/weave-passwd created
+daemonset.apps/weave-net created
+⚙  Addon rook 1.0.4
+namespace/rook-ceph created
+Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use apiextensions.k8s.io/v1 CustomResourceDefinition
+customresourcedefinition.apiextensions.k8s.io/cephblockpools.ceph.rook.io created
+customresourcedefinition.apiextensions.k8s.io/cephclusters.ceph.rook.io created
+customresourcedefinition.apiextensions.k8s.io/cephfilesystems.ceph.rook.io created
+customresourcedefinition.apiextensions.k8s.io/cephnfses.ceph.rook.io created
+customresourcedefinition.apiextensions.k8s.io/cephobjectstores.ceph.rook.io created
+customresourcedefinition.apiextensions.k8s.io/cephobjectstoreusers.ceph.rook.io created
+customresourcedefinition.apiextensions.k8s.io/volumes.rook.io created
+serviceaccount/rook-ceph-mgr created
+serviceaccount/rook-ceph-osd created
+serviceaccount/rook-ceph-system created
+role.rbac.authorization.k8s.io/rook-ceph-mgr created
+role.rbac.authorization.k8s.io/rook-ceph-osd created
+role.rbac.authorization.k8s.io/rook-ceph-system created
+clusterrole.rbac.authorization.k8s.io/rook-ceph-mgr-system-rules created
+clusterrole.rbac.authorization.k8s.io/rook-ceph-mgr-system created
+clusterrole.rbac.authorization.k8s.io/rook-ceph-cluster-mgmt-rules created
+clusterrole.rbac.authorization.k8s.io/rook-ceph-cluster-mgmt created
+clusterrole.rbac.authorization.k8s.io/rook-ceph-global-rules created
+clusterrole.rbac.authorization.k8s.io/rook-ceph-global created
+clusterrole.rbac.authorization.k8s.io/rook-ceph-mgr-cluster-rules created
+clusterrole.rbac.authorization.k8s.io/rook-ceph-mgr-cluster created
+rolebinding.rbac.authorization.k8s.io/rook-ceph-cluster-mgmt created
+rolebinding.rbac.authorization.k8s.io/rook-ceph-mgr-system created
+rolebinding.rbac.authorization.k8s.io/rook-ceph-mgr created
+rolebinding.rbac.authorization.k8s.io/rook-ceph-osd created
+rolebinding.rbac.authorization.k8s.io/rook-ceph-system created
+clusterrolebinding.rbac.authorization.k8s.io/rook-ceph-global created
+clusterrolebinding.rbac.authorization.k8s.io/rook-ceph-mgr-cluster created
+deployment.apps/rook-ceph-operator created
+awaiting rook-ceph pods
+awaiting rook-ceph volume plugin
+storageclass.storage.k8s.io/default created
+cephblockpool.ceph.rook.io/replicapool created
+cephcluster.ceph.rook.io/rook-ceph created
+cephobjectstore.ceph.rook.io/rook-ceph-store created
+awaiting rook-ceph dashboard password
+awaiting rook-ceph RGW pod
+cephobjectstoreuser.ceph.rook.io/kurl created
+NAME                                         TYPE                 DATA   AGE
+rook-ceph-object-user-rook-ceph-store-kurl   kubernetes.io/rook   2      2s
+awaiting rook-ceph object store health
+⚙  Addon contour 1.7.0
+namespace/projectcontour created
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+namespace/projectcontour configured
+Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use apiextensions.k8s.io/v1 CustomResourceDefinition
+customresourcedefinition.apiextensions.k8s.io/httpproxies.projectcontour.io created
+customresourcedefinition.apiextensions.k8s.io/tlscertificatedelegations.projectcontour.io created
+serviceaccount/contour-certgen created
+serviceaccount/contour created
+serviceaccount/envoy created
+role.rbac.authorization.k8s.io/contour-certgen created
+clusterrole.rbac.authorization.k8s.io/contour created
+rolebinding.rbac.authorization.k8s.io/contour created
+clusterrolebinding.rbac.authorization.k8s.io/contour created
+configmap/contour created
+service/contour created
+service/envoy created
+deployment.apps/contour created
+daemonset.apps/envoy created
+job.batch/contour-certgen-v1.7.0 created
+⚙  Addon registry 2.7.1
+object store bucket docker-registry created
+configmap/registry-config created
+secret/registry-s3-secret created
+secret/registry-session-secret created
+service/registry created
+deployment.apps/registry created
+secret/registry-htpasswd created
+secret/registry-creds created
+~/kots/addons/registry/2.7.1/tmp ~/kots
+Generating a RSA private key
+.......+++++
+..................................+++++
+writing new private key to 'registry.key'
+-----
+Signature ok
+subject=CN = registry.kurl.svc.cluster.local
+Getting CA Private Key
+secret/registry-pki created
+~/kots
+⚙  Addon prometheus 0.33.0
+namespace/monitoring created
+Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use apiextensions.k8s.io/v1 CustomResourceDefinition
+customresourcedefinition.apiextensions.k8s.io/alertmanagers.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/podmonitors.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/prometheuses.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/prometheusrules.monitoring.coreos.com created
+customresourcedefinition.apiextensions.k8s.io/servicemonitors.monitoring.coreos.com created
+serviceaccount/prometheus-operator created
+clusterrole.rbac.authorization.k8s.io/prometheus-operator created
+clusterrolebinding.rbac.authorization.k8s.io/prometheus-operator created
+service/prometheus-operator created
+deployment.apps/prometheus-operator created
+serviceaccount/alertmanager-main created
+serviceaccount/kube-state-metrics created
+serviceaccount/node-exporter created
+serviceaccount/prometheus-adapter created
+serviceaccount/prometheus-k8s created
+role.rbac.authorization.k8s.io/prometheus-k8s created
+role.rbac.authorization.k8s.io/prometheus-k8s created
+role.rbac.authorization.k8s.io/prometheus-k8s created
+role.rbac.authorization.k8s.io/kube-state-metrics created
+role.rbac.authorization.k8s.io/prometheus-k8s-config created
+role.rbac.authorization.k8s.io/prometheus-k8s created
+role.rbac.authorization.k8s.io/prometheus-k8s created
+clusterrole.rbac.authorization.k8s.io/kube-state-metrics created
+clusterrole.rbac.authorization.k8s.io/node-exporter created
+clusterrole.rbac.authorization.k8s.io/prometheus-adapter created
+clusterrole.rbac.authorization.k8s.io/prometheus-k8s created
+clusterrole.rbac.authorization.k8s.io/resource-metrics-server-resources created
+clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader created
+rolebinding.rbac.authorization.k8s.io/prometheus-k8s created
+rolebinding.rbac.authorization.k8s.io/prometheus-k8s created
+rolebinding.rbac.authorization.k8s.io/resource-metrics-auth-reader created
+rolebinding.rbac.authorization.k8s.io/prometheus-k8s created
+rolebinding.rbac.authorization.k8s.io/kube-state-metrics created
+rolebinding.rbac.authorization.k8s.io/prometheus-k8s-config created
+rolebinding.rbac.authorization.k8s.io/prometheus-k8s created
+rolebinding.rbac.authorization.k8s.io/prometheus-k8s created
+clusterrolebinding.rbac.authorization.k8s.io/kube-state-metrics created
+clusterrolebinding.rbac.authorization.k8s.io/node-exporter created
+clusterrolebinding.rbac.authorization.k8s.io/prometheus-adapter created
+clusterrolebinding.rbac.authorization.k8s.io/prometheus-k8s created
+clusterrolebinding.rbac.authorization.k8s.io/resource-metrics:system:auth-delegator created
+configmap/adapter-config created
+secret/alertmanager-main created
+service/kube-controller-manager-prometheus-discovery created
+service/kube-scheduler-prometheus-discovery created
+service/alertmanager-main created
+service/kube-state-metrics created
+service/node-exporter created
+service/prometheus-adapter created
+service/prometheus-k8s created
+deployment.apps/kube-state-metrics created
+deployment.apps/prometheus-adapter created
+apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io created
+daemonset.apps/node-exporter created
+alertmanager.monitoring.coreos.com/main created
+prometheus.monitoring.coreos.com/k8s created
+prometheusrule.monitoring.coreos.com/prometheus-k8s-rules created
+servicemonitor.monitoring.coreos.com/alertmanager created
+servicemonitor.monitoring.coreos.com/coredns created
+servicemonitor.monitoring.coreos.com/kube-apiserver created
+servicemonitor.monitoring.coreos.com/kube-controller-manager created
+servicemonitor.monitoring.coreos.com/kube-scheduler created
+servicemonitor.monitoring.coreos.com/kube-state-metrics created
+servicemonitor.monitoring.coreos.com/kubelet created
+servicemonitor.monitoring.coreos.com/node-exporter created
+servicemonitor.monitoring.coreos.com/prometheus-operator created
+servicemonitor.monitoring.coreos.com/prometheus created
+serviceaccount/grafana created
+configmap/grafana-dashboard-apiserver created
+configmap/grafana-dashboard-controller-manager created
+configmap/grafana-dashboard-k8s-resources-cluster created
+configmap/grafana-dashboard-k8s-resources-namespace created
+configmap/grafana-dashboard-k8s-resources-node created
+configmap/grafana-dashboard-k8s-resources-pod created
+configmap/grafana-dashboard-k8s-resources-workloads-namespace created
+configmap/grafana-dashboard-k8s-resources-workload created
+configmap/grafana-dashboard-kubelet created
+configmap/grafana-dashboard-node-cluster-rsrc-use created
+configmap/grafana-dashboard-node-rsrc-use created
+configmap/grafana-dashboard-nodes created
+configmap/grafana-dashboard-persistentvolumesusage created
+configmap/grafana-dashboard-pods created
+configmap/grafana-dashboard-prometheus-remote-write created
+configmap/grafana-dashboard-prometheus created
+configmap/grafana-dashboard-proxy created
+configmap/grafana-dashboard-scheduler created
+configmap/grafana-dashboard-statefulset created
+configmap/grafana-dashboards created
+configmap/graphana-config-ini created
+secret/grafana-admin created
+secret/grafana-datasources created
+service/grafana created
+deployment.apps/grafana created
+servicemonitor.monitoring.coreos.com/grafana created
+⚙  Addon kotsadm 1.24.1
+object store bucket kotsadm created
+secret/etcd-client-cert created
+secret/kubelet-client-cert created
+W1128 16:22:54.035776   26310 helpers.go:553] --dry-run is deprecated and can be replaced with --dry-run=client.
+Error from server (NotFound): pods "kotsadm-migrations" not found
+Error from server (NotFound): deployments.apps "kotsadm-web" not found
+Error from server (NotFound): services "kotsadm-api" not found
+Error from server (NotFound): deployments.apps "kotsadm-api" not found
+Error from server (NotFound): services "kotsadm-api-node" not found
+Error from server (NotFound): serviceaccounts "kotsadm-api" not found
+Error from server (NotFound): clusterrolebindings.rbac.authorization.k8s.io "kotsadm-api-rolebinding" not found
+Error from server (NotFound): clusterroles.rbac.authorization.k8s.io "kotsadm-api-role" not found
+serviceaccount/kotsadm-operator created
+serviceaccount/kotsadm created
+clusterrole.rbac.authorization.k8s.io/kotsadm-operator-clusterrole created
+clusterrole.rbac.authorization.k8s.io/kotsadm-role created
+clusterrolebinding.rbac.authorization.k8s.io/kotsadm-operator-clusterrolebinding created
+clusterrolebinding.rbac.authorization.k8s.io/kotsadm-rolebinding created
+configmap/kotsadm-web-scripts created
+secret/kotsadm-authstring created
+secret/kotsadm-cluster-token created
+secret/kotsadm-encryption created
+secret/kotsadm-password created
+secret/kotsadm-postgres created
+secret/kotsadm-s3 created
+secret/kotsadm-session created
+service/kotsadm-postgres created
+service/kotsadm created
+deployment.apps/kotsadm-operator created
+deployment.apps/kotsadm created
+statefulset.apps/kotsadm-postgres created
+pod/kotsadm-migrations created
+Generating a RSA private key
+...................................................................+++++
+..+++++
+writing new private key to 'kotsadm.key'
+-----
+secret/kotsadm-tls created
+secret/kotsadm-tls annotated
+serviceaccount/kurl-proxy created
+role.rbac.authorization.k8s.io/secret-manager created
+rolebinding.rbac.authorization.k8s.io/kurl-proxy-tls-secrets created
+service/kurl-proxy-kotsadm created
+deployment.apps/kurl-proxy-kotsadm created
+label "velero.io/exclude-from-backup" not found.
+persistentvolumeclaim/kotsadm-postgres-kotsadm-postgres-0 labeled
+~/kots/addons/kotsadm/1.24.1/assets ~/kots
+~/kots
+⚙  Addon ekco 0.7.0
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+namespace/kurl configured
+serviceaccount/ekco created
+role.rbac.authorization.k8s.io/ekco-rotate-certs created
+clusterrole.rbac.authorization.k8s.io/ekco-cluster created
+clusterrole.rbac.authorization.k8s.io/ekco-kube-system created
+clusterrole.rbac.authorization.k8s.io/ekco-rook-ceph created
+rolebinding.rbac.authorization.k8s.io/ekco-rotate-certs created
+clusterrolebinding.rbac.authorization.k8s.io/ekco-cluster created
+configmap/ekco-config created
+deployment.apps/ekc-operator created
+rolebinding.rbac.authorization.k8s.io/ekco-kube-system created
+rolebinding.rbac.authorization.k8s.io/ekco-rook-ceph created
+pod "ekc-operator-5f745bc7dc-mwn8c" deleted
+Created symlink /etc/systemd/system/multi-user.target.wants/ekco-reboot.service → /etc/systemd/system/ekco-reboot.service.
+configmap/kurl-config created
+
+
+		Installation
+		  Complete ✔
+
+
+Kotsadm: http://192.168.64.17:8800
+Login with password (will not be shown again): eUutyq7OX
+
+
+
+
+The UIs of Prometheus, Grafana and Alertmanager have been exposed on NodePorts 30900, 30902 and 30903 respectively.
+
+To access Grafana use the generated user:password of admin:DRWch4II7 .
+
+
+
+To access the cluster with kubectl, reload your shell:
+
+    bash -l
+
+
+
+The local /etc/docker/daemon.json has been merged with the spec from the installer, but has not been applied. To apply restart docker.
+
+ systemctl daemon-reload
+ systemctl restart docker
+
+These settings will automatically be applied on the next restart.
+
+
+Node join commands expire after 24 hours.
+
+To generate new node join commands, run curl -sSL https://kurl.sh/nodeapp-unstable/tasks.sh | sudo bash -s join_token on this node.
+
+To add worker nodes to this installation, run the following script on your other nodes:
+    curl -sSL https://kurl.sh/nodeapp-unstable/join.sh | sudo bash -s kubernetes-master-address=192.168.64.17:6443 kubeadm-token=uprhn7.xd7u8q6nazic5qkm kubeadm-token-ca-hash=sha256:8a394e37ec75f904fb8812cd8f66eb8b11660c5480d19a3236979e83a9550299 kubernetes-version=1.19.3 docker-registry-ip=10.96.0.8
+
