@@ -8,7 +8,7 @@ I tested Replicated.Com's KOTS product using two (2) deployment types:
 
 I used [NodeApp](https://github.com/dwrightco1/nodeapp) for testing.  The application has a front-end running Node.Js and a back-end running MySQL.
 
-For the Kotsadm `Configure Application` screen, I decided to add an option for exposing the front-end service as either a `LoadBalancer` or `NodePort`.  My assumption is that I'll be able to parameterize the user-select value into the `frontent-service.yaml` (which manages access to the frontend Deployment).
+For the Kotsadm `Configure Application` screen, I decided to add an option for exposing the front-end service as either a `LoadBalancer` or `NodePort`.  My assumption is that I'll be able to parameterize the user-selected value into the `frontent-service.yaml` (which manages access to the frontend Deployment).
 
 ## Environment Setup
 I used this [Vagrantfile](vagrant/Vagrantfile) to build a Dev Workstation running Ubuntu 18.04.
