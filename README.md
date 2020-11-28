@@ -5,6 +5,7 @@ Notes from my evaluation of Replicated.Com's KOTS product.
 
 1. Is the embedded installer omnipotent?  (It seems to download even if already downloaded)
 2. Is there a log for the embedded installer?
+3. How do you configure serviceType Load-Balancer in embedded clusters?
 
 ## Evaluation Plan
 **0. Installation Log**
