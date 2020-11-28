@@ -60,7 +60,7 @@ To see the metadata for the various installation types (embedded, existing, air-
 $ replicated channel inspect Unstable
 ```
 
-## Evaluation Step 2 : DEPLOY [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) TO *EMBEDDED* CLUSTER
+## Evaluation Step 2 : DEPLOY NodeApp TO *EMBEDDED* CLUSTER
 
 **2.1 Install Kubernetes Cluster (Embedded)**
 
@@ -85,6 +85,12 @@ To validate, run:
 $ kubectl get nodes
 NAME   STATUS   ROLES    AGE   VERSION
 kots   Ready    master   50m   v1.19.3
+```
+
+**2.3 Install KOTS Components**
+
+```
+curl -fsSL https://kots.io/install | bash
 ```
 
 ## Evaluation Step 3 : DEPLOY [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) TO *EXISTING* CLUSTER
