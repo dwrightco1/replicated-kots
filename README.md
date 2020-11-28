@@ -1,16 +1,18 @@
 # Replicated KOTS Evaluation
 Notes from my evaluation of Replicated.Com's KOTS product.
 
-# Evaluation Plan
+---
+## Evaluation Plan
 I tested Replicated.Com's KOTS product using two (2) deployment types:
 * Embedded (Vagrant VM)
 * Existing (EKS Cluster on AWS)
 
-I used a [simple web application](https://github.com/dwrightco1/nodeapp) for testing.  The application has a front-end running Node.Js and a back-end running MySQL.
+I used [NodeApp](https://github.com/dwrightco1/nodeapp) for testing.  The application has a front-end running Node.Js and a back-end running MySQL.
 
-For the Kotsadm `Configure Application` screen, I decided to add an option for exposing the front-end service as either a `LoadBalancer` or `NodePort`.  My assumption is that I'll be able to parameterize the user-select value into the `frontent-service.yaml` that manages access to the `frontend-deployment.yaml`.
+For the Kotsadm `Configure Application` screen, I decided to add an option for exposing the front-end service as either a `LoadBalancer` or `NodePort`.  My assumption is that I'll be able to parameterize the user-select value into the `frontent-service.yaml` (which manages access to the frontend Deployment).
 
-# Environment Setup
+---
+## Environment Setup
 I used this [Vagrantfile](vagrant/Vagrantfile) to build a Dev Workstation running Ubuntu 18.04.
 
 The post-install for the Vagrant build includes:
@@ -20,49 +22,82 @@ The post-install for the Vagrant build includes:
 * [install-kubectl.sh](vagrant/scripts/install-terraform-aws.sh)
 * [install-replicated-cli.sh](vagrant/scripts/install-replicated-cli.sh)
 
-Once the Vagrant VM is ready, SSH to it and perform the remaining tasks from there.
+All remaining tasks were performed from the Vagrant VM.
 
-# Evaluation 1 : EMBEDDED CLUSTER
+---
+## Evaluation Step 1: PACKAGE [NodeApp](https://github.com/dwrightco1/nodeapp) Using Replicated KOTS
 
-# Evaluation 1 : EXISTING CLUSTER
+**1.1 Using [https://vendor.replicated.com](https://vendor.replicated.com), Create an Application**
 
-**Step 2: **
-**2. Configure AWS Integration**
+* Create an Application and get its `Slug`
+* Create an API Token (with read/write access)
 
-Configure the AWS Client to use your AWS account when provisioning resources:
+**1.2 Configure & Validate Environment**
+
 ```
-$ aws configure
-AWS Access Key ID [None]: ********
-AWS Secret Access Key [None]: ********
-Default region name [None]: us-east-1
-Default output format [None]: json
-```
-
-**3. Provision an EKS Cluster on AWS**
-
-Using [eks-deployer](https://github.com/dyvantage/eks-deployer), create a Kubernetes cluster (to run tests against):
-```
-$ git clone https://github.com/dyvantage/eks-deployer.git
-$ cd ~/eks-deployer
-$ ./install-prereqs.sh
-$ terraform init
-$ terraform plan     # this is an optional preview step
-$ terraform apply -auto-approve
+export REPLICATED_APP=<slug>
+export REPLICATED_API_TOKEN=<token>
+replicated release ls
 ```
 
-Once the cluster is done provisioning, configure kubectl:
+**1.3 Clone Repository, Re-Factor Code, Run Linter, and Package Application**
+After re-factoring code, I created a new repo: [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git)
 ```
-$ aws eks --region $(terraform output region) update-kubeconfig --name $(terraform output cluster_name)
+git clone https://github.com/dwrightco1/nodeapp-replicated.git ~/nodeapp-replicated
+cd ~/nodeapp-replicated
+replicated release lint --yaml-dir=manifests
+```
+
+Once the linter runs clean, performing the following steps to package:
+```
+replicated release create --auto
+replicated customer create --name "DyVantage" --expires-in "240h" --channel "Unstable"
+replicated customer download-license --customer DyVantage ~/DyVantage-${REPLICATED_APP}-license.yaml
+```
+
+Note: Try setting `--expires-in` to an hour (and learn the license renewal process)
+
+To see the metadata for the various installation types (embedded, existing, air-gapped), run:
+```
+$ replicated channel inspect Unstable
+```
+
+---
+## Evaluation Step 2 : DEPLOY [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) TO *EMBEDDED* CLUSTER
+
+**2.1 Install Kubernetes Cluster (Embedded)**
+To install Kubernetes components, run:
+```
+curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
+```
+
+Here is a [sample log](kots-install.log) from the embedded installer.
+
+**2.2 Configure Kubectl**
+To configure `kubectl` to operate against the cluster, run:
+```
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+To validate, run:
+```
 $ kubectl get nodes
-NAME                                       STATUS   ROLES    AGE    VERSION
-ip-10-0-1-158.us-east-2.compute.internal   Ready    <none>   110s   v1.17.12-eks-7684af
-ip-10-0-3-164.us-east-2.compute.internal   Ready    <none>   108s   v1.17.12-eks-7684af
-ip-10-0-3-59.us-east-2.compute.internal    Ready    <none>   107s   v1.17.12-eks-7684af
+NAME   STATUS   ROLES    AGE   VERSION
+kots   Ready    master   50m   v1.19.3
 ```
 
-**4. Deploy 2-Tier Application (Web/Database)**
+---
+## Evaluation Step 3 : DEPLOY [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) TO *EXISTING* CLUSTER
 
-Validate the new cluster by deploying a [Sample Application](https://github.com/dwrightco1/nodeapp-replicated).  This is a simple Node.js application with a MySQL database back-end.
+**3.1 Build EKS Cluster (on AWS)**
+
+I built an EKS Cluster on AWS using [eks-deployer](https://github.com/dyvantage/eks-deployer).
+
+**3.2 Deploy *Non-Replicated* Version of NodeApp**
+
+Validate the cluster by deploying the *non-Replicated* version of [NodeApp](https://github.com/dwrightco1/nodeapp):
 ```
 kubectl apply -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
 ```
@@ -97,64 +132,12 @@ $ kubectl get pods -l app=mysql
 $ kubectl describe pod <>
 ```
 
-Cleanup (delete all Kubernetes resources created by the installer)
+Delete all Kubernetes resources created by insalling NodeApp:
 ```
 $ kubectl delete -f https://raw.githubusercontent.com/dwrightco1/nodeapp/master/kubernetes/install-nodeapp.yaml
 ```
 
-**5) Package [Sample Application](https://github.com/dwrightco1/nodeapp) Using Replicated KOTS**
-
-**5.1 Using [https://vendor.replicated.com](https://vendor.replicated.com), Create an Application**
-
-* Create an Application and get its `Slug`
-* Create an API Token (with read/write access)
-
-**5.2 Configure & Validate Environment**
-
-```
-export REPLICATED_APP=<slug>
-export REPLICATED_API_TOKEN=<token>
-replicated release ls
-```
-
-**5.3 Clone Repository, Run Linter, and Package Application**
-
-```
-git clone https://github.com/dwrightco1/nodeapp-replicated.git ~/nodeapp-replicated
-cd ~/nodeapp-replicated
-replicated release lint --yaml-dir=manifests
-```
-
-Once the linter runs clean, performing the following steps to package:
-```
-replicated release create --auto
-replicated customer create --name "DyVantage" --expires-in "240h" --channel "Unstable"
-replicated customer download-license --customer DyVantage ~/DyVantage-${REPLICATED_APP}-license.yaml
-```
-
-Note: Try setting `--expires-in` to an hour (and learn the license renewal process)
-
-To see the metadata for the various installation types (embedded, existing, air-gapped), run:
-```
-$ replicated channel inspect Unstable
-EXISTING:
-    curl -fsSL https://kots.io/install | bash
-    kubectl kots install nodeapp/unstable
-EMBEDDED:
-    curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
-AIRGAP:
-    curl -fSL -o nodeapp-unstable.tar.gz https://k8s.kurl.sh/bundle/nodeapp-unstable.tar.gz
-    # ... scp or sneakernet nodeapp-unstable.tar.gz to airgapped machine, then
-    tar xvf nodeapp-unstable.tar.gz
-    sudo bash ./install.sh airgap
-```
-
-These are the different installation types:
-* `EXISTING` -- deploy against an existing Kubernetes cluster
-* `EMBEDDED` -- deploy a NEW Kubernetes cluster on a local machine (VM)
-* `AIRGAP` -- deploy in an Air-Gapped environment (i.e. no Internet connectivity)
-
-**5.3 Deploy Application to *EXISTING EKS CLUSTER*)**
+**3.3 Deploy *Replicated* Version of NodeApp**
 
 First, install KOTS (which is a Plugin for kubectl):
 ```
@@ -195,36 +178,7 @@ kotsadm-operator-7d86d48c46-q8bnp   1/1     Running     0          4m34s
 kotsadm-postgres-0                  1/1     Running     0          5m51s
 ```
 
-**5.4 Deploy Application to *EMBEDDED CLUSTER*)**
-
-Post-Install Configs for VM or Bare-Metal cluster node:
-* Make sure the hostname is set and resolvable in local /etc/hosts
-* Make sure NTS is configured and working (I experienced curl TLS-related errors due to time drift)
-
-**5.4.1 Install Kubernetes Cluster (Embedded)**
-To install Kubernetes components, run:
-```
-curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
-```
-
-Here is a [sample log](kots-install.log) from the embedded installer.
-
-**5.4.2 Configure Kubectl **
-To configure `kubectl` to operate against the cluster, run:
-```
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-```
-
-To validate, run:
-```
-$ kubectl get nodes
-NAME   STATUS   ROLES    AGE   VERSION
-kots   Ready    master   50m   v1.19.3
-```
-
-**6. Delete EKS Cluster**
+**4. Delete EKS Cluster**
 
 IMPORTANT: don't forget this step -- it deletes all AWS resources created by the Terraform installer:
 ```
@@ -238,6 +192,8 @@ Something to watch out for: if you create an AWS resource through Kubernetes (li
 2. Is the embedded installer omnipotent?  (It seems to download even if already downloaded)
 3. Is there a log for the embedded installer?
 4. How do you configure serviceType Load-Balancer in embedded clusters?
+5. Make sure the hostname is set and resolvable in local /etc/hosts
+6. Make sure NTS is configured and working (I experienced curl TLS-related errors due to time drift)
 
 ## Documentation Bugs
 1. URL = https://kots.io/vendor/guides/quickstart
