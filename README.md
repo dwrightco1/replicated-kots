@@ -10,7 +10,6 @@ I used [NodeApp](https://github.com/dwrightco1/nodeapp) for testing.  The applic
 
 For the Kotsadm `Configure Application` screen, I decided to add an option for exposing the front-end service as either a `LoadBalancer` or `NodePort`.  My assumption is that I'll be able to parameterize the user-select value into the `frontent-service.yaml` (which manages access to the frontend Deployment).
 
----
 ## Environment Setup
 I used this [Vagrantfile](vagrant/Vagrantfile) to build a Dev Workstation running Ubuntu 18.04.
 
@@ -23,7 +22,6 @@ The post-install for the Vagrant build includes:
 
 All remaining tasks were performed from the Vagrant VM.
 
----
 ## Evaluation Step 1: PACKAGE [NodeApp](https://github.com/dwrightco1/nodeapp) Using Replicated KOTS
 
 **1.1 Using [https://vendor.replicated.com](https://vendor.replicated.com), Create an Application**
@@ -61,7 +59,6 @@ To see the metadata for the various installation types (embedded, existing, air-
 $ replicated channel inspect Unstable
 ```
 
----
 ## Evaluation Step 2 : DEPLOY [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) TO *EMBEDDED* CLUSTER
 
 **2.1 Install Kubernetes Cluster (Embedded)**
@@ -87,7 +84,6 @@ NAME   STATUS   ROLES    AGE   VERSION
 kots   Ready    master   50m   v1.19.3
 ```
 
----
 ## Evaluation Step 3 : DEPLOY [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) TO *EXISTING* CLUSTER
 
 **3.1 Build EKS Cluster (on AWS)**
