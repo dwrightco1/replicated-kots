@@ -1,7 +1,6 @@
 # Replicated KOTS Evaluation
 Notes from my evaluation of Replicated.Com's KOTS product.
 
----
 ## Evaluation Plan
 I tested Replicated.Com's KOTS product using two (2) deployment types:
 * Embedded (Vagrant VM)
