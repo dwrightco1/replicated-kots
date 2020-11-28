@@ -38,6 +38,7 @@ replicated release ls
 ```
 
 **1.3 Clone Repository, Re-Factor Code, Run Linter, and Package Application**
+
 After re-factoring code, I created a new repo: [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git)
 ```
 git clone https://github.com/dwrightco1/nodeapp-replicated.git ~/nodeapp-replicated
@@ -62,6 +63,7 @@ $ replicated channel inspect Unstable
 ## Evaluation Step 2 : DEPLOY [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) TO *EMBEDDED* CLUSTER
 
 **2.1 Install Kubernetes Cluster (Embedded)**
+
 To install Kubernetes components, run:
 ```
 curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
@@ -70,6 +72,7 @@ curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
 Here is a [sample log](kots-install.log) from the embedded installer.
 
 **2.2 Configure Kubectl**
+
 To configure `kubectl` to operate against the cluster, run:
 ```
 mkdir -p $HOME/.kube
@@ -173,9 +176,8 @@ kotsadm-operator-7d86d48c46-q8bnp   1/1     Running     0          4m34s
 kotsadm-postgres-0                  1/1     Running     0          5m51s
 ```
 
-**4. Delete EKS Cluster**
-
-IMPORTANT: don't forget this step -- it deletes all AWS resources created by the Terraform installer:
+## CLEANUP AWS INFRASTRUCTURE
+IMPORTANT: don't forget this step -- it deletes all AWS resources created by [eks-deployer](https://github.com/dyvantage/eks-deployer):
 ```
 $ terraform destroy -auto-approve
 ```
