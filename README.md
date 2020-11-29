@@ -71,6 +71,16 @@ curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
 
 Here is a [sample log](kots-install.log) from the embedded installer.
 
+The installer creates a single-node Kubernetes cluster with the following components:
+* Weave
+* Rook (w/CEPH)
+* Contour (Ingress Controller)
+* Registry
+* Prometheus (including AlertManager & Grafana)
+* Replicated Components
+** Ekco (Replicated Operator for kURL-based clusters)
+** Kotsadm
+
 **2.2 Configure Kubectl**
 
 To configure `kubectl` to operate against the cluster, run:
