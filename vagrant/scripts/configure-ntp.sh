@@ -11,5 +11,12 @@ else
 	timezone="UTC"
 fi
 
+# install OS updates
+sudo apt-get update
+
+# set timezone
 sudo timedatectl set-timezone ${timezone}
+
+# ntp
 sudo timedatectl set-ntp on
+sudo apt install -y ntp
