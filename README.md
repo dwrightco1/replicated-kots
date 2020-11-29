@@ -16,7 +16,6 @@ I used this [Vagrantfile](vagrant/Vagrantfile) to build a Dev Workstation runnin
 The post-install for the Vagrant build includes:
 * [configure-hostname.sh](vagrant/scripts/configure-hostname.sh)
 * [configure-ntp.sh](vagrant/scripts/configure-ntp.sh)
-* [install-terraform-aws.sh](vagrant/scripts/install-terraform-aws.sh)
 * [install-kubectl.sh](vagrant/scripts/install-terraform-aws.sh)
 * [install-replicated-cli.sh](vagrant/scripts/install-replicated-cli.sh)
 
