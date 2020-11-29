@@ -37,6 +37,11 @@ replicated release ls
 ```
 
 **1.3 Clone Repository, Re-Factor Code, Run Linter, and Package Application**
+Since the NodeApp is already packaged for Kubernetes, re-factoring involved adding 4 yaml files required by the Replicated linter:
+* config.yaml
+* preflight.yaml
+* replicated-app.yaml
+* support-bundle.yaml
 
 After re-factoring code, I created a new repo: [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git)
 ```
