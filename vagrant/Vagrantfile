@@ -2,21 +2,20 @@
 # note: this vm requires the vagrant-disksize plugin... to install run: vagrant plugin install vagrant-disksize
 Vagrant.configure("2") do |config|
   config.vm.define "kots" do |kots|
-	kots.vm.box = "hashicorp/bionic64"
-	kots.vm.box_check_update = false
+    kots.vm.box = "hashicorp/bionic64"
+    kots.vm.box_check_update = false
     kots.disksize.size = '100GB'
-	kots.vm.network "private_network", ip: "192.168.64.100"
-	kots.vm.provider "virtualbox" do |vb|
-	  vb.gui = false
-	  vb.memory = "12288"
-	  vb.cpus = 2
-	  vb.name = "kots"
-	end
+    kots.vm.network "private_network", ip: "192.168.64.100"
+    kots.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.memory = "12288"
+      vb.cpus = 2
+      vb.name = "kots"
+    end
 
-	# post-install script
-	kots.vm.provision :shell, path: "scripts/configure-hostname.sh", :args => ["kots", "192.168.64.100"]
-	kots.vm.provision :shell, path: "scripts/configure-ntp.sh", :args => "UTC"
-    kots.vm.provision :shell, path: "scripts/install-terraform-aws.sh"
+    # post-install script
+    kots.vm.provision :shell, path: "scripts/configure-hostname.sh", :args => ["kots", "192.168.64.100"]
+    kots.vm.provision :shell, path: "scripts/configure-ntp.sh", :args => "UTC"
     kots.vm.provision :shell, path: "scripts/install-kubectl.sh"
     kots.vm.provision :shell, path: "scripts/install-replicated-cli.sh"
   end
