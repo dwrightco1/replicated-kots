@@ -167,12 +167,12 @@ Once installed, validate by running:
 kubectl kots --help
 ```
 
-Now you're ready to deploy KOTS infrastrucure to the cluster:
+The next step is to bring up the application-specific Admin Console and prompt the user for a License and any installation options:
 ```
 kubectl kots install nodeapp/unstable
 ```
 
-Note: it prompts for a namespace to deploy the application to, which is why the linter flags hard-coded namespaces.
+Note: it prompts for a namespace to deploy the application into (which is why the linter flags hard-coded namespaces).
 
 Now take a look at the Kubernetes objects associated with KOTS:
 ```
@@ -194,6 +194,11 @@ kotsadm-migrations-1606491633       0/1     Completed   0          5m1s
 kotsadm-minio-0                     1/1     Running     0          5m51s
 kotsadm-operator-7d86d48c46-q8bnp   1/1     Running     0          4m34s
 kotsadm-postgres-0                  1/1     Running     0          5m51s
+```
+
+To get to the Admin Console again, run:
+```
+kubectl kots admin-console --namespace nodeapp-dev
 ```
 
 ## CLEANUP AWS INFRASTRUCTURE
