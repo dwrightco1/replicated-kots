@@ -154,7 +154,7 @@ kubectl kots install nodeapp/unstable
 ```
 Note: This command starts `kubectl proxy` (I think) to forward traffic from localhost:8800 to Admin Console running in the cluster.
 
-You need to use the browser to install the application (really!?) -- which gets a license from the user, runs [Pre-Flight Checks](img/nodeapp-preflight-checks.png), and then shows the [Installation Status](img/nodeapp-install-success.png) to the user.
+You need to use the browser to install the application -- which gets a license from the user, runs [Pre-Flight Checks](img/nodeapp-preflight-checks.png), and then shows the [Installation Status](img/nodeapp-install-success.png) to the user.
 
 **Here's a look at the Kubernetes objects installed as part of KOTS**:
 ```
