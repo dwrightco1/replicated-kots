@@ -178,5 +178,5 @@ Something to watch out for: if you create an AWS resource through Kubernetes (li
 2. Is the embedded installer omnipotent?  (It seems to download even if already downloaded)
 3. Is there a verbose log for the embedded installer?
 4. What options are there for serviceType Load-Balancer in embedded clusters?
-5. I experienced quite a few curl TLS-related errors... these are usually related to time drift, but I had NTP syncing properly
+5. I experienced quite a few curl/tls-related errors (curl: (56) OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 104)
 6. Do you have to use the Admin Console to deploy an application?  Can it be scripted?  Maybe a REST endpoint you can post the license to?
