@@ -28,6 +28,8 @@ For the Kotsadm `Configure Application` screen, I decided to add an option for e
 - [x] Deploy KOTS components to EKS cluster
 - [x] Using Admin Console, deploy NodeApp to EKS cluster
 
+The testing resulted in a [Successful Deployment](img/nodeapp-install-success.png) version of NodeApp-Replicated running on both cluster types.
+
 ## Environment Setup
 I used this [Vagrantfile](vagrant/Vagrantfile) to build a Dev Workstation running Ubuntu 18.04.
 
