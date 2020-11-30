@@ -12,21 +12,21 @@ For the Kotsadm `Configure Application` screen, I decided to add an option for e
 
 ## TEST RESULTS
 
-**PACKAGE APPLICATION**
+**1. PACKAGE APPLICATION**
 
 - [x] Re-factor NodeApp -> NodeApp-Replicated
 - [x] Package NodeApp-Replicated using Replicated CLI
 
-**DEPLOY APPLLICATION TO EXISTING CLUSTER**
-- [x] Provision a new EKS Cluster on AWS
-- [x] Deploy KOTS components to EKS cluster
-- [x] Using Admin Console, deploy NodeApp to EKS cluster
-
-**DEPLY APPLICATION TO EMBEDDED CLUSTER**
+**2. DEPLOY APPLICATION TO EMBEDDED CLUSTER**
 - [x] Provision Vagrant VM
 - [x] Deploy Kubernetes cluster using embedded installer
 - [x] Deploy KOTS components to cluster
 - [x] Using Admin Console, deploy NodeApp to cluster
+
+**3. DEPLOY APPLLICATION TO EXISTING CLUSTER**
+- [x] Provision a new EKS Cluster on AWS
+- [x] Deploy KOTS components to EKS cluster
+- [x] Using Admin Console, deploy NodeApp to EKS cluster
 
 ## Environment Setup
 I used this [Vagrantfile](vagrant/Vagrantfile) to build a Dev Workstation running Ubuntu 18.04.
@@ -39,7 +39,7 @@ The post-install for the Vagrant build includes:
 
 All remaining tasks were performed from the Vagrant VM.
 
-## STEP 1: PACKAGE NodeApp Using Replicated KOTS
+## TEST 1 : PACKAGE APPLICATION
 
 **1.1 Using Replicated.Com's [Vendor Portal](https://vendor.replicated.com), Create an Application**
 
@@ -83,7 +83,7 @@ To see the metadata for the various installation types (embedded, existing, air-
 $ replicated channel inspect Unstable
 ```
 
-## STEP 2 : DEPLOY NodeApp TO *EMBEDDED* CLUSTER
+## TEST 2 : DEPLOY APPLICATION TO EMBEDDED CLUSTER
 
 **2.1 Install Kubernetes Cluster (Embedded)**
 
@@ -126,15 +126,15 @@ kots   Ready    master   50m   v1.19.3
 curl -fsSL https://kots.io/install | bash
 ```
 
-## STEP 3 : DEPLOY Nodeapp-Replicated TO *EXISTING* CLUSTER
+## TEST 3 : DEPLOY APPLLICATION TO EXISTING CLUSTER
 
 **3.1 Build EKS Cluster (on AWS)**
 
-I built an EKS Cluster on AWS using [eks-deployer](https://github.com/dyvantage/eks-deployer).
+Build an EKS Cluster on AWS using [eks-deployer](https://github.com/dyvantage/eks-deployer).
 
 **3.2 Deploy Non-Replicated Version of NodeApp (as a baseline to validate the cluster)**
 
-I followed [this procedure](README-NODEAPP.md) to validate the cluster using NodeApp.
+Use [this procedure](README-NODEAPP.md) to validate the cluster using NodeApp.
 
 **3.3 Deploy *Replicated* Version of NodeApp**
 
@@ -182,14 +182,6 @@ To get to the Admin Console again, run:
 ```
 kubectl kots admin-console --namespace nodeapp-dev
 ```
-
-## CLEANUP AWS INFRASTRUCTURE
-IMPORTANT: don't forget this step -- it deletes all AWS resources created by [eks-deployer](https://github.com/dyvantage/eks-deployer):
-```
-$ terraform destroy -auto-approve
-```
-
-Something to watch out for: if you create an AWS resource through Kubernetes (like a PVC) deleteting the EKS cluster will not remove the storage volume associated with the PVC.  So make sure you clean up your Kubernetes resoures using `kubectl` before cleaning up with Terraform.
 
 ## Comments/Observations
 1. When extracting the replicated-cli package, it didn't extract to a subdirectory (and it overwrote the README.md in the current directory)
