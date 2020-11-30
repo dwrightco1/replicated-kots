@@ -1,7 +1,7 @@
 # Replicated KOTS Testing
 Notes from my testing of Replicated.Com's KOTS product.
 
-## Evaluation Plan
+## Test Plan
 I tested Replicated.Com's KOTS product using two (2) deployment types:
 * Embedded (Vagrant VM)
 * Existing (EKS Cluster on AWS)
