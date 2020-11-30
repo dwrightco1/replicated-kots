@@ -174,21 +174,9 @@ $ terraform destroy -auto-approve
 Something to watch out for: if you create an AWS resource through Kubernetes (like a PVC) deleteting the EKS cluster will not remove the storage volume associated with the PVC.  So make sure you clean up your Kubernetes resoures using `kubectl` before cleaning up with Terraform.
 
 ## Comments/Observations
-1. When extracting the replicated-cli package, it didn't extract to a subdiretory (and it override the README.md in the current directory)
+1. When extracting the replicated-cli package, it didn't extract to a subdirectory (and it overwrote the README.md in the current directory)
 2. Is the embedded installer omnipotent?  (It seems to download even if already downloaded)
-3. Is there a log for the embedded installer?
-4. How do you configure serviceType Load-Balancer in embedded clusters?
-5. Make sure the hostname is set and resolvable in local /etc/hosts
-6. Make sure NTS is configured and working (I experienced curl TLS-related errors due to time drift)
-
-## Documentation Bugs
-1. URL = https://kots.io/vendor/guides/quickstart
-```
-bad_text = [
-	"You’ll should be"
-	"define how you application will work"
-	"To add worker nodes to this installation, run the following script on your other nodes"
-	"which will show the initial version that was check deployed"
-]
-```
-
+3. Is there a verbose log for the embedded installer?
+4. What options are there for serviceType Load-Balancer in embedded clusters?
+5. I experienced quite a few curl TLS-related errors... these are usually related to time drift, but I had NTP syncing properly
+6. Do you have to use the Admin Console to deploy an application?  Can it be scripted?  Maybe a REST endpoint you can post the license to?
