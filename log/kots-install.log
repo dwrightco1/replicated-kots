@@ -372,7 +372,7 @@ cd9d05dbcd40: Loading layer [==================================================>
 Loaded image: replicated/ekco:v0.7.0
 ⚙  Initialize Kubernetes
 ⚙  generate kubernetes bootstrap token
-Kubernetes bootstrap token: uprhn7.xd7u8q6nazic5qkm
+Kubernetes bootstrap token: ********
 This token will expire in 24 hours
 W1128 16:18:38.646226    6606 configset.go:348] WARNING: kubeadm cannot validate component configs for API groups [kubelet.config.k8s.io kubeproxy.config.k8s.io]
 [init] Using Kubernetes version: v1.19.3
@@ -439,8 +439,8 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 192.168.64.17:6443 --token uprhn7.xd7u8q6nazic5qkm \
-    --discovery-token-ca-cert-hash sha256:8a394e37ec75f904fb8812cd8f66eb8b11660c5480d19a3236979e83a9550299
+kubeadm join 192.168.64.17:6443 --token ******** \
+    --discovery-token-ca-cert-hash sha256:********
 ✔ Kubernetes Master Initialized
 Kubernetes master is running at https://192.168.64.17:6443
 KubeDNS is running at https://192.168.64.17:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
@@ -713,7 +713,7 @@ configmap/kurl-config created
 
 
 Kotsadm: http://192.168.64.17:8800
-Login with password (will not be shown again): eUutyq7OX
+Login with password (will not be shown again): ********
 
 
 
@@ -743,5 +743,5 @@ Node join commands expire after 24 hours.
 To generate new node join commands, run curl -sSL https://kurl.sh/nodeapp-unstable/tasks.sh | sudo bash -s join_token on this node.
 
 To add worker nodes to this installation, run the following script on your other nodes:
-    curl -sSL https://kurl.sh/nodeapp-unstable/join.sh | sudo bash -s kubernetes-master-address=192.168.64.17:6443 kubeadm-token=uprhn7.xd7u8q6nazic5qkm kubeadm-token-ca-hash=sha256:8a394e37ec75f904fb8812cd8f66eb8b11660c5480d19a3236979e83a9550299 kubernetes-version=1.19.3 docker-registry-ip=10.96.0.8
+    curl -sSL https://kurl.sh/nodeapp-unstable/join.sh | sudo bash -s kubernetes-master-address=192.168.64.17:6443 kubeadm-token=******** kubeadm-token-ca-hash=sha256:******** kubernetes-version=1.19.3 docker-registry-ip=10.96.0.8
 
