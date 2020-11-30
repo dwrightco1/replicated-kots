@@ -21,9 +21,9 @@ The post-install for the Vagrant build includes:
 
 All remaining tasks were performed from the Vagrant VM.
 
-## Evaluation Step 1: PACKAGE [NodeApp](https://github.com/dwrightco1/nodeapp) Using Replicated KOTS
+## Evaluation Step 1: PACKAGE NodeApp Using Replicated KOTS
 
-**1.1 Using [https://vendor.replicated.com](https://vendor.replicated.com), Create an Application**
+**1.1 Using Replicated.Com's [Vendor Portal](https://vendor.replicated.com), Create an Application**
 
 * Create an Application and get its `Slug`
 * Create an API Token (with read/write access)
@@ -37,6 +37,7 @@ replicated release ls
 ```
 
 **1.3 Clone Repository, Re-Factor Code, Run Linter, and Package Application**
+
 Since the NodeApp is already packaged for Kubernetes, re-factoring involved adding 4 yaml files required by the Replicated linter:
 * config.yaml
 * preflight.yaml
