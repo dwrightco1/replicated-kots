@@ -1,4 +1,4 @@
-# Replicated KOTS Evaluation
+# Replicated KOTS Testing
 Notes from my testing of Replicated.Com's KOTS product.
 
 ## Evaluation Plan
