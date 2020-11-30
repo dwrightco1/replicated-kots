@@ -74,7 +74,7 @@ To install Kubernetes components, run:
 curl -fsSL https://k8s.kurl.sh/nodeapp-unstable | sudo bash
 ```
 
-Here is a [sample log](kots-install.log) from the embedded installer.
+Here is a [sample log](log/kots-install.log) from the embedded installer.
 
 The installer creates a single-node Kubernetes cluster with the following components:
 * Weave
@@ -116,7 +116,7 @@ I built an EKS Cluster on AWS using [eks-deployer](https://github.com/dyvantage/
 
 **3.2 Deploy Non-Replicated Version of NodeApp (as a baseline to validate the cluster)**
 
-I followed [this procedure](VALIDATE-NODEAPP.md) to validate the cluster using NodeApp.
+I followed [this procedure](README-NODEAPP.md) to validate the cluster using NodeApp.
 
 **3.3 Deploy *Replicated* Version of NodeApp**
 
