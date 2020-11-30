@@ -12,16 +12,17 @@ For the Kotsadm `Configure Application` screen, I decided to add an option for e
 
 ## TEST RESULTS
 
-* PACKAGE APPLICATION
+**PACKAGE APPLICATION**
+
 - [x] Re-factor NodeApp -> NodeApp-Replicated
 - [x] Package NodeApp-Replicated using Replicated CLI
 
-* DEPLOY APPLLICATION TO EXISTING CLUSTER
+**DEPLOY APPLLICATION TO EXISTING CLUSTER**
 - [x] Provision a new EKS Cluster on AWS
 - [x] Deploy KOTS components to EKS cluster
 - [x] Using Admin Console, deploy NodeApp to EKS cluster
 
-* DEPLY APPLICATION TO EMBEDDED CLUSTER
+**DEPLY APPLICATION TO EMBEDDED CLUSTER**
 - [x] Provision Vagrant VM
 - [x] Deploy Kubernetes cluster using embedded installer
 - [x] Deploy KOTS components to cluster
