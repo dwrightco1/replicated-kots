@@ -21,7 +21,7 @@ The post-install for the Vagrant build includes:
 
 All remaining tasks were performed from the Vagrant VM.
 
-## TESTING STEP 1: PACKAGE NodeApp Using Replicated KOTS
+## STEP 1: PACKAGE NodeApp Using Replicated KOTS
 
 **1.1 Using Replicated.Com's [Vendor Portal](https://vendor.replicated.com), Create an Application**
 
@@ -65,7 +65,7 @@ To see the metadata for the various installation types (embedded, existing, air-
 $ replicated channel inspect Unstable
 ```
 
-## TESTING STEP 2 : DEPLOY NodeApp TO *EMBEDDED* CLUSTER
+## STEP 2 : DEPLOY NodeApp TO *EMBEDDED* CLUSTER
 
 **2.1 Install Kubernetes Cluster (Embedded)**
 
@@ -108,7 +108,7 @@ kots   Ready    master   50m   v1.19.3
 curl -fsSL https://kots.io/install | bash
 ```
 
-## TESTING STEP 3 : DEPLOY Nodeapp-Replicated TO *EXISTING* CLUSTER
+## STEP 3 : DEPLOY Nodeapp-Replicated TO *EXISTING* CLUSTER
 
 **3.1 Build EKS Cluster (on AWS)**
 
