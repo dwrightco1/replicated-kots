@@ -103,8 +103,6 @@ The installer creates a single-node Kubernetes cluster with the following compon
 * Registry
 * Prometheus (including AlertManager & Grafana)
 * Replicated Components
-** Ekco (Replicated Operator for kURL-based clusters)
-** Kotsadm
 
 **2.2 Configure Kubectl**
 
