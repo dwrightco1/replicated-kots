@@ -113,6 +113,10 @@ curl -fsSL https://kots.io/install | bash
 
 I built an EKS Cluster on AWS using [eks-deployer](https://github.com/dyvantage/eks-deployer).
 
+**3.2 Deploy Non-Replicated Version of NodeApp (as a baseline to validate the cluster)**
+
+I followed [this procedure](VALIDATE-NODEAPP.md) to validate the cluster using NodeApp.
+
 **3.3 Deploy *Replicated* Version of NodeApp**
 
 First, install KOTS (which is a Plugin for kubectl):
