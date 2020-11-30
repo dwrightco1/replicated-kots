@@ -71,7 +71,7 @@ cd ~/nodeapp-replicated
 replicated release lint --yaml-dir=manifests
 ```
 
-Once the linter runs clean, performing the following steps to package:
+Once the linter runs clean, perform the following steps to package:
 ```
 replicated release create --auto
 replicated customer create --name "DyVantage" --expires-in "240h" --channel "Unstable"
