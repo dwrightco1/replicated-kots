@@ -64,7 +64,7 @@ Since the NodeApp is already packaged for Kubernetes, re-factoring involved addi
 * replicated-app.yaml
 * support-bundle.yaml
 
-After re-factoring code, I created a new repo: [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git)
+After re-factoring the code, I created a new repo: [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git)
 ```
 git clone https://github.com/dwrightco1/nodeapp-replicated.git ~/nodeapp-replicated
 cd ~/nodeapp-replicated
