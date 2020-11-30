@@ -107,7 +107,7 @@ kots   Ready    master   50m   v1.19.3
 curl -fsSL https://kots.io/install | bash
 ```
 
-## Evaluation Step 3 : DEPLOY [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) TO *EXISTING* CLUSTER
+## Evaluation Step 3 : DEPLOY Nodeapp-Replicated TO *EXISTING* CLUSTER
 
 **3.1 Build EKS Cluster (on AWS)**
 
@@ -171,10 +171,11 @@ The next step is to bring up the application-specific Admin Console and prompt t
 ```
 kubectl kots install nodeapp/unstable
 ```
+Note: This command starts `kubectl proxy` (I think) to forward traffic from localhost:8800 to Admin Console running in the cluster.
 
-Note: it prompts for a namespace to deploy the application into (which is why the linter flags hard-coded namespaces).
+You need to use the browser to install the application (really!?) -- which gets a license from the user, runs [Pre-Flight Checks](img/nodeapp-preflight-checks.png), and then shows the [Installation Status](img/nodeapp-install-success.png) to the user.
 
-Now take a look at the Kubernetes objects associated with KOTS:
+**Here's a look at the Kubernetes objects installed as part of KOTS**:
 ```
 $ kubectl get deployments -n nodeapp-dev
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
