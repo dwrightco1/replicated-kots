@@ -14,7 +14,7 @@ For the Kotsadm `Configure Application` screen, I decided to add an option for e
 
 **1. PACKAGE APPLICATION**
 
-- [x] Re-factor [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git) -> [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git)
+- [x] Re-factor [NodeApp](https://github.com/dwrightco1/nodeapp.git) -> [NodeApp-Replicated](https://github.com/dwrightco1/nodeapp-replicated.git)
 - [x] Package NodeApp-Replicated using Replicated CLI
 
 **2. DEPLOY APPLICATION TO EMBEDDED CLUSTER**
