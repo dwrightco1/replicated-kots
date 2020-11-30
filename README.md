@@ -6,7 +6,7 @@ I tested Replicated.Com's KOTS product using two (2) deployment types:
 * Embedded (Vagrant VM)
 * Existing (EKS Cluster on AWS)
 
-I used [NodeApp](https://github.com/dwrightco1/nodeapp) for testing.  The application has a front-end running Node.Js and a back-end running MySQL.
+I used [NodeApp](https://github.com/dwrightco1/nodeapp) for testing.  This is a simple application that I use for testing.  It has a front-end running Node.Js and a back-end running MySQL.  The frontend uses DNS for service discovery of the backend.
 
 For the Kotsadm `Configure Application` screen, I decided to add an option for exposing the front-end service as either a `LoadBalancer` or `NodePort`.  My assumption is that I'll be able to parameterize the user-selected value into the `frontent-service.yaml` (which manages access to the frontend Deployment).
 
