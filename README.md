@@ -185,7 +185,7 @@ kubectl kots admin-console --namespace nodeapp-dev
 
 ## Comments/Observations
 1. When extracting the replicated-cli package, it didn't extract to a subdirectory (and it overwrote the README.md in the current directory)
-2. Is the embedded installer omnipotent?  (It seems to download even if already downloaded)
+2. Is the embedded installer odimpotent?  (It seems to download even if already downloaded)
 3. Is there a verbose log for the embedded installer?
 4. What options are there for serviceType Load-Balancer in embedded clusters?
 5. I experienced quite a few curl/tls-related errors (curl: (56) OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 104)
